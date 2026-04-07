@@ -29,3 +29,12 @@ alt.Chart(cars).mark_point().encode(
 ).interactive()
 
 ```
+
+## Visualización de Barras
+
+```{python}
+alt.Chart(cars).mark_bar().encode(
+    x='Origin',
+    y='count()'
+)
+```
