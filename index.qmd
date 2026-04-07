@@ -1,0 +1,18 @@
+---
+Title: "Bienvenidos a mi sitio Quarto"
+format:
+    html:
+        toc: false
+---
+
+# Introducción
+
+# Objetivo
+
+## Objetivo general
+
+## Objetivos Específicos
+
+1. Obj1
+2. Obj1
+3. Obj1
