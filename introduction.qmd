@@ -1,0 +1,270 @@
+---
+Title: "Mi primera visualización"
+---
+
+# Librerías
+```{python}
+import altair as alt
+import pandas as pd
+from vega_datasets import data
+```
+
+# Eliminar limitante con dataset grandes
+
+```{python}
+alt.data_transformers.disable_max_rows()
+```
+
+# Cars Data
+
+Vamos a cargar el dataset desde `vega_datasets`. Vamos a usar el dataset de `cars`
+
+```{python}
+cars = data.cars()
+cars.head()
+```
+
+## Visualización Scatterplot
+
+La visualización de tipo Scatterplot necesita 2 atributos numéricos contínuos. En este caso vamos visualizar dos variables: `Miles_per_Gallon` y `Horsepower`
+
+```{python}
+scatterplot = alt.Chart(cars).mark_point().encode(
+    x='Miles_per_Gallon',
+    y='Horsepower'
+).interactive()
+
+scatterplot
+
+```
+
+## Guardar la visualización
+
+```{python}
+scatterplot.save('scatterplot.html')
+```
+
+## Visualización de Barras
+
+```{python}
+alt.Chart(cars).mark_bar().encode(
+    x='Origin',
+    y='count()'
+)
+```
+
+## Visualización con líneas y puntos
+
+```{python}
+lineas = alt.Chart(cars).mark_line().encode(
+    x='Year',
+    y='mean(Miles_per_Gallon)',
+    color='Origin'
+)
+
+puntos = lineas.mark_point().encode(
+    y = 'Miles_per_Gallon'
+)
+
+puntos + lineas
+
+```
+
+# Global Development Data
+
+## Cargar el dataset
+
+```{python}
+gm_url = pd.read_csv("https://raw.githubusercontent.com/erickedu85/dataset/master/world-data-gapminder.csv", parse_dates=['year'])
+
+gm_url.info()
+```
+
+## Gráfico lineal de la población
+
+```{python}
+alt.Chart(gm_url).mark_line().encode(
+    alt.X('year'),
+    alt.Y('sum(population)')
+)
+```
+
+## Gráfico de area de la población
+
+```{python}
+alt.Chart(gm_url).mark_area().encode(
+    alt.X('year'),
+    alt.Y('sum(population)')
+)
+```
+
+```{python}
+alt.Chart(gm_url).mark_area().encode(
+    alt.X('year'),
+    alt.Y('sum(population)'),
+    alt.Color('region')
+)
+```
+
+## Gráfico de lineas y area de la población
+
+```{python}
+
+lineas_pob = alt.Chart(gm_url).mark_line().encode(
+    alt.X('year'),
+    alt.Y('sum(population)'),
+    alt.Color('region')
+)
+
+area_pob = lineas_pob.mark_area()
+
+lineas_pob | area_pob
+
+```
+
+
+## Gráfico de area children per woman
+
+```{python}
+alt.Chart(gm_url).mark_area().encode(
+    alt.X('year'),
+    alt.Y('mean(children_per_woman)')
+)
+```
+
+## Gráfico de area y linea children per woman
+
+```{python}
+area_children = alt.Chart(gm_url).mark_area().encode(
+    alt.X('year'),
+    alt.Y('mean(children_per_woman)'),
+    alt.Color('region')
+)
+
+linea_children = area_children.mark_line()
+
+area_children | linea_children
+
+```
+
+## Gráfico de barras e histogramas
+
+```{python}
+gm2018 = gm_url[gm_url['year'] == '2018']
+gm2018.head()
+```
+
+### Total de población por continente
+
+```{python}
+
+title_y = 'Población'
+number_format = '.3s'
+
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X('region', title=None),
+    alt.Y(
+        'sum(population)', 
+        title=title_y, 
+        axis=alt.Axis(
+            format=number_format
+        )
+    ),
+    tooltip = [
+        alt.Tooltip('region', title='Región'),
+        alt.Tooltip('sum(population)', title=title_y, format=number_format)
+    ]
+)
+```
+
+### Países por continente
+
+```{python}
+
+my_order = ['Africa','Europe', 'Oceania', 'Asia', 'Americas']
+
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X('count()'),
+    alt.Y('region', sort=my_order)
+)
+```
+
+### Histograma
+
+```{python}
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X('life_expectancy', bin=True),
+    alt.Y('count()')
+)
+```
+
+### Histograma con BinParams
+
+```{python}
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X('life_expectancy', bin=alt.BinParams(maxbins=10)),
+    alt.Y('count()')
+)
+```
+
+### Cálculo del número de bins
+
+Obtención del número de registros `n`
+
+```{python}
+import math
+
+datos = gm2018['life_expectancy'].dropna().tolist()
+n = len(datos)
+print(f"Número de registros: {n}")
+
+x_min = gm2018["life_expectancy"].min()
+x_max = gm2018["life_expectancy"].max()
+```
+
+### La regla de la raíz cuadrada
+
+```{python}
+k_raiz = math.ceil((math.sqrt(n)))
+print(f'Regla de la raíz cuadrada: {k_raiz}')
+```
+
+```{python}
+
+step = (x_max - x_min) / k_raiz
+
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X(
+        'life_expectancy', 
+        bin=alt.BinParams(
+            step=step,
+            nice=False
+        )
+    ),
+    alt.Y('count()')
+)
+```
+
+### La regla de Sturges
+
+```{python}
+k_sturges = math.ceil(1 + math.log2(n))
+print(f'Regla de Sturges: {k_sturges}')
+```
+
+```{python}
+
+step = (x_max - x_min) / k_sturges
+
+alt.Chart(gm2018).mark_bar().encode(
+    alt.X(
+        'life_expectancy', 
+        bin=alt.BinParams(
+            step=step,
+            nice=False
+        )
+    ),
+    alt.Y('count()')
+)
+```
+

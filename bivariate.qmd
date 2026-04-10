@@ -1,0 +1,133 @@
+---
+title: "Análisis Bivariado"
+---
+
+# Cuantitativo vs Categórico
+
+## Librerías
+
+```{python}
+import pandas as pd
+import altair as alt
+from vega_datasets import data
+```
+
+## Cargar el dataset
+
+```{python}
+movies_extended = data.movies().dropna(subset=['Major_Genre'])
+
+movies_extended.head()
+```
+
+
+## Histogram
+
+```{python}
+alt.Chart(movies_extended).mark_bar().encode(
+    alt.X(
+        'Worldwide_Gross',
+        bin=alt.BinParams(
+            maxbins=30
+        )
+    ),
+    alt.Y('count()'),
+    alt.Color('Major_Genre')
+)
+```
+
+## Density Plot
+
+```{python}
+alt.Chart(movies_extended).transform_density(
+    'Worldwide_Gross',
+    groupby=['Major_Genre'],
+    as_=['Worldwide_Gross','density']
+).mark_area(opacity=0.5).encode(
+    alt.X('Worldwide_Gross'),
+    alt.Y('density:Q', stack=None),
+    alt.Color('Major_Genre')
+).interactive()
+```
+
+## Bar chart
+
+```{python}
+alt.Chart(movies_extended).mark_bar().encode(
+    alt.X('mean(Worldwide_Gross)'),
+    alt.Y('Major_Genre')
+)
+```
+
+## Variante con Tick
+
+```{python}
+alt.Chart(movies_extended).mark_tick().encode(
+    alt.X('Worldwide_Gross'),
+    alt.Y('Major_Genre'),
+    tooltip=['Title:N']
+).interactive()
+```
+
+## Heatmap
+
+```{python}
+alt.Chart(movies_extended).mark_rect().encode(
+    alt.X(
+        'Worldwide_Gross',
+        bin=alt.BinParams(
+            maxbins=10
+        )
+    ),
+    alt.Y('Major_Genre'),
+    alt.Color('count()')
+)
+```
+
+## Bloxplot
+
+```{python}
+
+alt.Chart(movies_extended).mark_boxplot().encode(
+    alt.X('Worldwide_Gross'),
+    alt.Y('Major_Genre'),
+    alt.Size('count()')
+)
+```
+
+
+# Cuantitativo vs Cuantitativo
+
+## Scatterplot
+
+```{python}
+alt.Chart(movies_extended).mark_point().encode(
+    alt.X('IMDB_Rating'),
+    alt.Y('Rotten_Tomatoes_Rating'),
+    tooltip=['Title:N','IMDB_Rating','Rotten_Tomatoes_Rating']
+)
+```
+
+```{python}
+alt.Chart(movies_extended).mark_point().encode(
+    alt.X('Production_Budget'),
+    alt.Y('Worldwide_Gross'),
+    tooltip=['Title:N','IMDB_Rating','Rotten_Tomatoes_Rating', 'Production_Budget','Worldwide_Gross']
+)
+```
+
+## Heatmap
+
+```{python}
+alt.Chart(movies_extended).mark_rect().encode(
+    alt.X('Production_Budget',bin=alt.BinParams(maxbins=100)),
+    alt.Y('Worldwide_Gross',bin=alt.BinParams(maxbins=100)),
+    alt.Color('count()'),
+    tooltip=['count()']
+)
+
+```
+
+# Categórico vs Categórico
+
+## Bar chart

@@ -1,5 +1,5 @@
 ---
-Title: "Bienvenidos a mi sitio Quarto"
+title: "Bienvenidos a mi sitio Quarto"
 format:
     html:
         toc: false
@@ -7,12 +7,5 @@ format:
 
 # Introducción
 
-# Objetivo
+Este sitio reúne notas, guías breves y recursos prácticos sobre visualización de datos y herramientas de trabajo reproducible. 
 
-## Objetivo general
-
-## Objetivos Específicos
-
-1. Obj1
-2. Obj1
-3. Obj1

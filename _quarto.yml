@@ -8,8 +8,14 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: viz.qmd
-        text: Visualización
+      - href: introduction.qmd
+        text: Introducción
+      - text: Análisis
+        menu:
+        - href: univariate.qmd
+          text: Análisis Univariado
+        - href: bivariate.qmd
+          text: Análisis Bivariado
 
 format:
   html:

@@ -1,37 +1,184 @@
 [
   {
-    "objectID": "index.html#objetivo-general",
-    "href": "index.html#objetivo-general",
-    "title": "Introducción",
-    "section": "Objetivo general",
-    "text": "Objetivo general"
-  },
-  {
-    "objectID": "index.html#objetivos-específicos",
-    "href": "index.html#objetivos-específicos",
-    "title": "Introducción",
-    "section": "Objetivos Específicos",
-    "text": "Objetivos Específicos\n\nObj1\nObj1\nObj1"
-  },
-  {
-    "objectID": "viz.html",
-    "href": "viz.html",
-    "title": "Dataset",
+    "objectID": "introduction.html",
+    "href": "introduction.html",
+    "title": "Eliminar limitante con dataset grandes",
     "section": "",
-    "text": "Vamos a cargar el dataset desde vega_datasets:\n\nimport altair as alt\nfrom vega_datasets import data\n\nVamos a usar el dataset de cars\n\ncars = data.cars()\ncars.head()\n\n\n\n\n\n\n\n\nName\nMiles_per_Gallon\nCylinders\nDisplacement\nHorsepower\nWeight_in_lbs\nAcceleration\nYear\nOrigin\n\n\n\n\n0\nchevrolet chevelle malibu\n18.0\n8\n307.0\n130.0\n3504\n12.0\n1970-01-01\nUSA\n\n\n1\nbuick skylark 320\n15.0\n8\n350.0\n165.0\n3693\n11.5\n1970-01-01\nUSA\n\n\n2\nplymouth satellite\n18.0\n8\n318.0\n150.0\n3436\n11.0\n1970-01-01\nUSA\n\n\n3\namc rebel sst\n16.0\n8\n304.0\n150.0\n3433\n12.0\n1970-01-01\nUSA\n\n\n4\nford torino\n17.0\n8\n302.0\n140.0\n3449\n10.5\n1970-01-01\nUSA\n\n\n\n\n\n\n\n\n\nLa visualización de tipo Scatterplot necesita 2 atributos numéricos contínuos. En este caso vamos visualizar dos variables: Miles_per_Gallon y Horsepower\n\nalt.Chart(cars).mark_point().encode(\n    x='Miles_per_Gallon',\n    y='Horsepower'\n).interactive()\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(cars).mark_bar().encode(\n    x='Origin',\n    y='count()'\n)"
+    "text": "import altair as alt\nimport pandas as pd\nfrom vega_datasets import data\n\n\nalt.data_transformers.disable_max_rows()\n\nDataTransformerRegistry.enable('default')"
   },
   {
-    "objectID": "viz.html#visualización-scatterplot",
-    "href": "viz.html#visualización-scatterplot",
-    "title": "Dataset",
-    "section": "",
-    "text": "La visualización de tipo Scatterplot necesita 2 atributos numéricos contínuos. En este caso vamos visualizar dos variables: Miles_per_Gallon y Horsepower\n\nalt.Chart(cars).mark_point().encode(\n    x='Miles_per_Gallon',\n    y='Horsepower'\n).interactive()"
+    "objectID": "introduction.html#visualización-scatterplot",
+    "href": "introduction.html#visualización-scatterplot",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Visualización Scatterplot",
+    "text": "Visualización Scatterplot\nLa visualización de tipo Scatterplot necesita 2 atributos numéricos contínuos. En este caso vamos visualizar dos variables: Miles_per_Gallon y Horsepower\n\nscatterplot = alt.Chart(cars).mark_point().encode(\n    x='Miles_per_Gallon',\n    y='Horsepower'\n).interactive()\n\nscatterplot"
   },
   {
-    "objectID": "viz.html#visualización-de-barras",
-    "href": "viz.html#visualización-de-barras",
-    "title": "Dataset",
+    "objectID": "introduction.html#guardar-la-visualización",
+    "href": "introduction.html#guardar-la-visualización",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Guardar la visualización",
+    "text": "Guardar la visualización\n\nscatterplot.save('scatterplot.html')"
+  },
+  {
+    "objectID": "introduction.html#visualización-de-barras",
+    "href": "introduction.html#visualización-de-barras",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Visualización de Barras",
+    "text": "Visualización de Barras\n\nalt.Chart(cars).mark_bar().encode(\n    x='Origin',\n    y='count()'\n)"
+  },
+  {
+    "objectID": "introduction.html#visualización-con-líneas-y-puntos",
+    "href": "introduction.html#visualización-con-líneas-y-puntos",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Visualización con líneas y puntos",
+    "text": "Visualización con líneas y puntos\n\nlineas = alt.Chart(cars).mark_line().encode(\n    x='Year',\n    y='mean(Miles_per_Gallon)',\n    color='Origin'\n)\n\npuntos = lineas.mark_point().encode(\n    y = 'Miles_per_Gallon'\n)\n\npuntos + lineas"
+  },
+  {
+    "objectID": "introduction.html#cargar-el-dataset",
+    "href": "introduction.html#cargar-el-dataset",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Cargar el dataset",
+    "text": "Cargar el dataset\n\ngm_url = pd.read_csv(\"https://raw.githubusercontent.com/erickedu85/dataset/master/world-data-gapminder.csv\", parse_dates=['year'])\n\ngm_url.info()\n\n&lt;class 'pandas.DataFrame'&gt;\nRangeIndex: 38982 entries, 0 to 38981\nData columns (total 14 columns):\n #   Column                 Non-Null Count  Dtype         \n---  ------                 --------------  -----         \n 0   country                38982 non-null  str           \n 1   year                   38982 non-null  datetime64[us]\n 2   population             38982 non-null  int64         \n 3   region                 38982 non-null  str           \n 4   sub_region             38982 non-null  str           \n 5   income_group           38982 non-null  str           \n 6   life_expectancy        38982 non-null  float64       \n 7   income                 38982 non-null  int64         \n 8   children_per_woman     38982 non-null  float64       \n 9   child_mortality        38980 non-null  float64       \n 10  pop_density            12282 non-null  float64       \n 11  co2_per_capita         16285 non-null  float64       \n 12  years_in_school_men    8188 non-null   float64       \n 13  years_in_school_women  8188 non-null   float64       \ndtypes: datetime64[us](1), float64(7), int64(2), str(4)\nmemory usage: 4.2 MB"
+  },
+  {
+    "objectID": "introduction.html#gráfico-lineal-de-la-población",
+    "href": "introduction.html#gráfico-lineal-de-la-población",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico lineal de la población",
+    "text": "Gráfico lineal de la población\n\nalt.Chart(gm_url).mark_line().encode(\n    alt.X('year'),\n    alt.Y('sum(population)')\n)"
+  },
+  {
+    "objectID": "introduction.html#gráfico-de-area-de-la-población",
+    "href": "introduction.html#gráfico-de-area-de-la-población",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico de area de la población",
+    "text": "Gráfico de area de la población\n\nalt.Chart(gm_url).mark_area().encode(\n    alt.X('year'),\n    alt.Y('sum(population)')\n)\n\n\n\n\n\n\n\n\nalt.Chart(gm_url).mark_area().encode(\n    alt.X('year'),\n    alt.Y('sum(population)'),\n    alt.Color('region')\n)"
+  },
+  {
+    "objectID": "introduction.html#gráfico-de-lineas-y-area-de-la-población",
+    "href": "introduction.html#gráfico-de-lineas-y-area-de-la-población",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico de lineas y area de la población",
+    "text": "Gráfico de lineas y area de la población\n\nlineas_pob = alt.Chart(gm_url).mark_line().encode(\n    alt.X('year'),\n    alt.Y('sum(population)'),\n    alt.Color('region')\n)\n\narea_pob = lineas_pob.mark_area()\n\nlineas_pob | area_pob"
+  },
+  {
+    "objectID": "introduction.html#gráfico-de-area-children-per-woman",
+    "href": "introduction.html#gráfico-de-area-children-per-woman",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico de area children per woman",
+    "text": "Gráfico de area children per woman\n\nalt.Chart(gm_url).mark_area().encode(\n    alt.X('year'),\n    alt.Y('mean(children_per_woman)')\n)"
+  },
+  {
+    "objectID": "introduction.html#gráfico-de-area-y-linea-children-per-woman",
+    "href": "introduction.html#gráfico-de-area-y-linea-children-per-woman",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico de area y linea children per woman",
+    "text": "Gráfico de area y linea children per woman\n\narea_children = alt.Chart(gm_url).mark_area().encode(\n    alt.X('year'),\n    alt.Y('mean(children_per_woman)'),\n    alt.Color('region')\n)\n\nlinea_children = area_children.mark_line()\n\narea_children | linea_children"
+  },
+  {
+    "objectID": "introduction.html#gráfico-de-barras-e-histogramas",
+    "href": "introduction.html#gráfico-de-barras-e-histogramas",
+    "title": "Eliminar limitante con dataset grandes",
+    "section": "Gráfico de barras e histogramas",
+    "text": "Gráfico de barras e histogramas\n\ngm2018 = gm_url[gm_url['year'] == '2018']\ngm2018.head()\n\n\n\n\n\n\n\n\ncountry\nyear\npopulation\nregion\nsub_region\nincome_group\nlife_expectancy\nincome\nchildren_per_woman\nchild_mortality\npop_density\nco2_per_capita\nyears_in_school_men\nyears_in_school_women\n\n\n\n\n218\nAfghanistan\n2018-01-01\n36400000\nAsia\nSouthern Asia\nLow\n58.7\n1870\n4.33\n65.90\n55.7\nNaN\nNaN\nNaN\n\n\n437\nAlbania\n2018-01-01\n2930000\nEurope\nSouthern Europe\nUpper middle\n78.0\n12400\n1.71\n12.90\n107.0\nNaN\nNaN\nNaN\n\n\n656\nAlgeria\n2018-01-01\n42000000\nAfrica\nNorthern Africa\nUpper middle\n77.9\n13700\n2.64\n23.10\n17.6\nNaN\nNaN\nNaN\n\n\n875\nAngola\n2018-01-01\n30800000\nAfrica\nSub-Saharan Africa\nLower middle\n65.2\n5850\n5.55\n81.60\n24.7\nNaN\nNaN\nNaN\n\n\n1094\nAntigua and Barbuda\n2018-01-01\n103000\nAmericas\nLatin America and the Caribbean\nHigh\n77.6\n21000\n2.03\n7.89\n234.0\nNaN\nNaN\nNaN\n\n\n\n\n\n\n\n\nTotal de población por continente\n\ntitle_y = 'Población'\nnumber_format = '.3s'\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X('region', title=None),\n    alt.Y(\n        'sum(population)', \n        title=title_y, \n        axis=alt.Axis(\n            format=number_format\n        )\n    ),\n    tooltip = [\n        alt.Tooltip('region', title='Región'),\n        alt.Tooltip('sum(population)', title=title_y, format=number_format)\n    ]\n)\n\n\n\n\n\n\n\n\n\nPaíses por continente\n\nmy_order = ['Africa','Europe', 'Oceania', 'Asia', 'Americas']\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X('count()'),\n    alt.Y('region', sort=my_order)\n)\n\n\n\n\n\n\n\n\n\nHistograma\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X('life_expectancy', bin=True),\n    alt.Y('count()')\n)\n\n\n\n\n\n\n\n\n\nHistograma con BinParams\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X('life_expectancy', bin=alt.BinParams(maxbins=10)),\n    alt.Y('count()')\n)\n\n\n\n\n\n\n\n\n\nCálculo del número de bins\nObtención del número de registros n\n\nimport math\n\ndatos = gm2018['life_expectancy'].dropna().tolist()\nn = len(datos)\nprint(f\"Número de registros: {n}\")\n\nx_min = gm2018[\"life_expectancy\"].min()\nx_max = gm2018[\"life_expectancy\"].max()\n\nNúmero de registros: 178\n\n\n\n\nLa regla de la raíz cuadrada\n\nk_raiz = math.ceil((math.sqrt(n)))\nprint(f'Regla de la raíz cuadrada: {k_raiz}')\n\nRegla de la raíz cuadrada: 14\n\n\n\nstep = (x_max - x_min) / k_raiz\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X(\n        'life_expectancy', \n        bin=alt.BinParams(\n            step=step,\n            nice=False\n        )\n    ),\n    alt.Y('count()')\n)\n\n\n\n\n\n\n\n\n\nLa regla de Sturges\n\nk_sturges = math.ceil(1 + math.log2(n))\nprint(f'Regla de Sturges: {k_sturges}')\n\nRegla de Sturges: 9\n\n\n\nstep = (x_max - x_min) / k_sturges\n\nalt.Chart(gm2018).mark_bar().encode(\n    alt.X(\n        'life_expectancy', \n        bin=alt.BinParams(\n            step=step,\n            nice=False\n        )\n    ),\n    alt.Y('count()')\n)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bienvenidos a mi sitio Quarto",
     "section": "",
-    "text": "alt.Chart(cars).mark_bar().encode(\n    x='Origin',\n    y='count()'\n)"
+    "text": "Introducción\nEste sitio reúne notas, guías breves y recursos prácticos sobre visualización de datos y herramientas de trabajo reproducible."
+  },
+  {
+    "objectID": "univariate.html",
+    "href": "univariate.html",
+    "title": "Análisis Univariado",
+    "section": "",
+    "text": "Librerías\n\nimport pandas as pd\nimport altair as alt\nfrom vega_datasets import data\n\n\n\nCargar dataset de movies\n\nmovies = pd.read_csv(\"https://raw.githubusercontent.com/erickedu85/dataset/master/movies.csv\")\n\nmovies.head()\n\n\n\n\n\n\n\n\ntitle\nruntime\nbudget\nrevenue\ngenre\ncountry\nvote_average\n\n\n\n\n0\nFinding Nemo\n100\n94000000\n940335536\nAnimation\nUnited States of America\n3.86\n\n\n1\nPirates of the Caribbean: The Curse of the Bla...\n143\n140000000\n655011224\nFantasy\nUnited States of America\n3.81\n\n\n2\nThe Simpsons Movie\n87\n75000000\n527068851\nAnimation\nUnited States of America\n3.44\n\n\n3\nPirates of the Caribbean: Dead Man's Chest\n151\n200000000\n1065659812\nFantasy\nUnited States of America\n3.47\n\n\n4\nMars Attacks!\n106\n70000000\n101371017\nFantasy\nUnited States of America\n2.96\n\n\n\n\n\n\n\n\n\nSingle-Axis plot\n\nalt.Chart(movies).mark_point().encode(\n    alt.X('runtime')\n)\n\n\n\n\n\n\n\n\nalt.Chart(movies).mark_tick().encode(\n    alt.X('runtime')\n)\n\n\n\n\n\n\n\n\nalt.Chart(movies).mark_bar().encode(\n    alt.X('runtime', bin=alt.Bin(maxbins=30)),\n    alt.Y('count()')\n)\n\n\n\n\n\n\n\n\n\nDensity Plot or KDE\n\nalt.Chart(movies).transform_density(\n    'runtime',\n    as_=['runtime','density']\n).mark_area().encode(\n    alt.X('runtime'),\n    alt.Y('density:Q')\n).properties(\n    title='Movie runtime'\n)\n\n\n\n\n\n\n\n\nalt.Chart(movies).transform_density(\n    'runtime',\n    groupby=['genre'],\n    as_=['runtime','density']\n).mark_area(opacity=0.5).encode(\n    alt.X('runtime'),\n    alt.Y('density:Q', stack=None),\n    alt.Color('genre')\n).properties(\n    title='Movie runtime'\n)\n\n\n\n\n\n\n\n\ndensity = alt.Chart(movies[:10]).transform_density(\n    'runtime',\n    as_=['runtime','density']\n).mark_area().encode(\n    alt.X('runtime'),\n    alt.Y('density:Q')\n).properties(\n    title='Movie runtime'\n)\n\ntick = alt.Chart(movies[:10]).mark_tick(\n    color='black',\n    yOffset=145\n).encode(\n    alt.X('runtime')\n)\n\ndensity + tick"
+  },
+  {
+    "objectID": "bivariate.html",
+    "href": "bivariate.html",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "import pandas as pd\nimport altair as alt\nfrom vega_datasets import data\n\n\n\n\n\nmovies_extended = data.movies().dropna(subset=['Major_Genre'])\n\nmovies_extended.head()\n\n\n\n\n\n\n\n\nTitle\nUS_Gross\nWorldwide_Gross\nUS_DVD_Sales\nProduction_Budget\nRelease_Date\nMPAA_Rating\nRunning_Time_min\nDistributor\nSource\nMajor_Genre\nCreative_Type\nDirector\nRotten_Tomatoes_Rating\nIMDB_Rating\nIMDB_Votes\n\n\n\n\n1\nFirst Love, Last Rites\n10876.0\n10876.0\nNaN\n300000.0\nAug 07 1998\nR\nNaN\nStrand\nNaN\nDrama\nNaN\nNaN\nNaN\n6.9\n207.0\n\n\n2\nI Married a Strange Person\n203134.0\n203134.0\nNaN\n250000.0\nAug 28 1998\nNaN\nNaN\nLionsgate\nNaN\nComedy\nNaN\nNaN\nNaN\n6.8\n865.0\n\n\n3\nLet's Talk About Sex\n373615.0\n373615.0\nNaN\n300000.0\nSep 11 1998\nNaN\nNaN\nFine Line\nNaN\nComedy\nNaN\nNaN\n13.0\nNaN\nNaN\n\n\n4\nSlam\n1009819.0\n1087521.0\nNaN\n1000000.0\nOct 09 1998\nR\nNaN\nTrimark\nOriginal Screenplay\nDrama\nContemporary Fiction\nNaN\n62.0\n3.4\n165.0\n\n\n7\nFoolish\n6026908.0\n6026908.0\nNaN\n1600000.0\nApr 09 1999\nR\nNaN\nArtisan\nOriginal Screenplay\nComedy\nContemporary Fiction\nNaN\nNaN\n3.8\n353.0\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_bar().encode(\n    alt.X(\n        'Worldwide_Gross',\n        bin=alt.BinParams(\n            maxbins=30\n        )\n    ),\n    alt.Y('count()'),\n    alt.Color('Major_Genre')\n)\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).transform_density(\n    'Worldwide_Gross',\n    groupby=['Major_Genre'],\n    as_=['Worldwide_Gross','density']\n).mark_area(opacity=0.5).encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('density:Q', stack=None),\n    alt.Color('Major_Genre')\n).interactive()\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_bar().encode(\n    alt.X('mean(Worldwide_Gross)'),\n    alt.Y('Major_Genre')\n)\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_tick().encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('Major_Genre'),\n    tooltip=['Title:N']\n).interactive()\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_rect().encode(\n    alt.X(\n        'Worldwide_Gross',\n        bin=alt.BinParams(\n            maxbins=10\n        )\n    ),\n    alt.Y('Major_Genre'),\n    alt.Color('count()')\n)\n\n\n\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_boxplot().encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('Major_Genre'),\n    alt.Size('count()')\n)"
+  },
+  {
+    "objectID": "bivariate.html#librerías",
+    "href": "bivariate.html#librerías",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "import pandas as pd\nimport altair as alt\nfrom vega_datasets import data"
+  },
+  {
+    "objectID": "bivariate.html#cargar-el-dataset",
+    "href": "bivariate.html#cargar-el-dataset",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "movies_extended = data.movies().dropna(subset=['Major_Genre'])\n\nmovies_extended.head()\n\n\n\n\n\n\n\n\nTitle\nUS_Gross\nWorldwide_Gross\nUS_DVD_Sales\nProduction_Budget\nRelease_Date\nMPAA_Rating\nRunning_Time_min\nDistributor\nSource\nMajor_Genre\nCreative_Type\nDirector\nRotten_Tomatoes_Rating\nIMDB_Rating\nIMDB_Votes\n\n\n\n\n1\nFirst Love, Last Rites\n10876.0\n10876.0\nNaN\n300000.0\nAug 07 1998\nR\nNaN\nStrand\nNaN\nDrama\nNaN\nNaN\nNaN\n6.9\n207.0\n\n\n2\nI Married a Strange Person\n203134.0\n203134.0\nNaN\n250000.0\nAug 28 1998\nNaN\nNaN\nLionsgate\nNaN\nComedy\nNaN\nNaN\nNaN\n6.8\n865.0\n\n\n3\nLet's Talk About Sex\n373615.0\n373615.0\nNaN\n300000.0\nSep 11 1998\nNaN\nNaN\nFine Line\nNaN\nComedy\nNaN\nNaN\n13.0\nNaN\nNaN\n\n\n4\nSlam\n1009819.0\n1087521.0\nNaN\n1000000.0\nOct 09 1998\nR\nNaN\nTrimark\nOriginal Screenplay\nDrama\nContemporary Fiction\nNaN\n62.0\n3.4\n165.0\n\n\n7\nFoolish\n6026908.0\n6026908.0\nNaN\n1600000.0\nApr 09 1999\nR\nNaN\nArtisan\nOriginal Screenplay\nComedy\nContemporary Fiction\nNaN\nNaN\n3.8\n353.0"
+  },
+  {
+    "objectID": "bivariate.html#histogram",
+    "href": "bivariate.html#histogram",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).mark_bar().encode(\n    alt.X(\n        'Worldwide_Gross',\n        bin=alt.BinParams(\n            maxbins=30\n        )\n    ),\n    alt.Y('count()'),\n    alt.Color('Major_Genre')\n)"
+  },
+  {
+    "objectID": "bivariate.html#density-plot",
+    "href": "bivariate.html#density-plot",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).transform_density(\n    'Worldwide_Gross',\n    groupby=['Major_Genre'],\n    as_=['Worldwide_Gross','density']\n).mark_area(opacity=0.5).encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('density:Q', stack=None),\n    alt.Color('Major_Genre')\n).interactive()"
+  },
+  {
+    "objectID": "bivariate.html#bar-chart",
+    "href": "bivariate.html#bar-chart",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).mark_bar().encode(\n    alt.X('mean(Worldwide_Gross)'),\n    alt.Y('Major_Genre')\n)"
+  },
+  {
+    "objectID": "bivariate.html#variante-con-tick",
+    "href": "bivariate.html#variante-con-tick",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).mark_tick().encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('Major_Genre'),\n    tooltip=['Title:N']\n).interactive()"
+  },
+  {
+    "objectID": "bivariate.html#heatmap",
+    "href": "bivariate.html#heatmap",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).mark_rect().encode(\n    alt.X(\n        'Worldwide_Gross',\n        bin=alt.BinParams(\n            maxbins=10\n        )\n    ),\n    alt.Y('Major_Genre'),\n    alt.Color('count()')\n)"
+  },
+  {
+    "objectID": "bivariate.html#bloxplot",
+    "href": "bivariate.html#bloxplot",
+    "title": "Análisis Bivariado",
+    "section": "",
+    "text": "alt.Chart(movies_extended).mark_boxplot().encode(\n    alt.X('Worldwide_Gross'),\n    alt.Y('Major_Genre'),\n    alt.Size('count()')\n)"
+  },
+  {
+    "objectID": "bivariate.html#scatterplot",
+    "href": "bivariate.html#scatterplot",
+    "title": "Análisis Bivariado",
+    "section": "Scatterplot",
+    "text": "Scatterplot\n\nalt.Chart(movies_extended).mark_point().encode(\n    alt.X('IMDB_Rating'),\n    alt.Y('Rotten_Tomatoes_Rating'),\n    tooltip=['Title:N','IMDB_Rating','Rotten_Tomatoes_Rating']\n)\n\n\n\n\n\n\n\n\nalt.Chart(movies_extended).mark_point().encode(\n    alt.X('Production_Budget'),\n    alt.Y('Worldwide_Gross'),\n    tooltip=['Title:N','IMDB_Rating','Rotten_Tomatoes_Rating', 'Production_Budget','Worldwide_Gross']\n)"
+  },
+  {
+    "objectID": "bivariate.html#heatmap-1",
+    "href": "bivariate.html#heatmap-1",
+    "title": "Análisis Bivariado",
+    "section": "Heatmap",
+    "text": "Heatmap\n\nalt.Chart(movies_extended).mark_rect().encode(\n    alt.X('Production_Budget',bin=alt.BinParams(maxbins=100)),\n    alt.Y('Worldwide_Gross',bin=alt.BinParams(maxbins=100)),\n    alt.Color('count()'),\n    tooltip=['count()']\n)"
+  },
+  {
+    "objectID": "bivariate.html#bar-chart-1",
+    "href": "bivariate.html#bar-chart-1",
+    "title": "Análisis Bivariado",
+    "section": "Bar chart",
+    "text": "Bar chart"
   }
 ]
