@@ -1,0 +1,194 @@
+---
+title: "Geo Viz"
+---
+
+# Librerías
+```{python}
+import pandas as pd
+import geopandas as gpd
+import altair as alt
+```
+
+# Cargar DS
+```{python}
+url = "https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip"
+
+gdf_ne = gpd.read_file(url)
+gdf_ne = gdf_ne[["NAME","CONTINENT","POP_EST","geometry"]]
+gdf_ne
+
+```
+
+# Visualización del mapa
+
+```{python}
+alt.Chart(gdf_ne).mark_geoshape().project(
+    type='mercator'
+)
+```
+
+## Focus y filter
+
+```{python}
+alt.Chart(gdf_ne).mark_geoshape().project(
+    scale=200,
+    translate=[320,70]
+)
+```
+
+## Pintado y bordes
+
+```{python}
+alt.Chart(gdf_ne).mark_geoshape(
+    fill='lightgray',
+    stroke = 'white'
+).project(
+    scale=200,
+    translate=[320,70]
+)
+```
+
+## Mapa de puntos
+
+```{python}
+
+gdf_sel = gdf_ne.query("CONTINENT == 'South America'")
+
+basemap = alt.Chart(gdf_sel).mark_geoshape(
+    fill='lightgray',
+    stroke = 'white'
+)
+
+bubbles = alt.Chart(gdf_sel).transform_calculate(
+    centroid = alt.expr.geoCentroid(None, alt.datum)
+).mark_circle().encode(
+    longitude='centroid[0]:Q',
+    latitude='centroid[1]:Q',
+    size='POP_EST'
+)
+
+basemap + bubbles
+
+```
+
+## Mapa Coroplético
+
+```{python}
+
+alt.Chart(gdf_sel).mark_geoshape().encode(
+    color='POP_EST',
+    tooltip=[
+        'POP_EST'
+    ]
+)
+
+```
+
+# Enlazar 2 archivos: DS y Geopandas
+
+```{python}
+from vega_datasets import data
+
+gdf_us_counties = alt.topo_feature(data.us_10m.url, "counties")
+gdf_us_counties
+
+```
+
+```{python}
+
+df_us_unemp = data.unemployment()
+df_us_unemp
+```
+
+## Merge de los 2 DS: geojson + df data.unemployment
+
+```{python}
+
+alt.Chart(gdf_us_counties).mark_geoshape().transform_lookup(
+    lookup='id',
+    from_=alt.LookupData(data=df_us_unemp, key='id', fields=['rate'])
+).encode(
+    alt.Color('rate:Q')
+).project(
+    type='albersUsa'
+)
+
+```
+
+# Repeat map
+
+```{python}
+
+states = alt.topo_feature(data.us_10m.url, 'states')
+
+source = data.population_engineers_hurricanes.url
+variable_list = ['population','engineers','hurricanes']
+
+
+alt.Chart(states).mark_geoshape().encode(
+    alt.Color(alt.repeat('row'), type='quantitative')
+).transform_lookup(
+    lookup='id',
+    from_=alt.LookupData(data=source, key='id', fields=variable_list)
+).project(
+    type='albersUsa'
+).repeat(
+    row=variable_list
+).resolve_scale(
+    color='independent'
+)
+
+```
+
+# Casos de asma en USA
+
+```{python}
+
+state_pop = pd.read_csv('https://raw.githubusercontent.com/erickedu85/dataset/master/us_population_coordinates_asthma-cases.csv')
+state_pop
+```
+
+## Mapa de puntos
+
+```{python}
+
+us_map = alt.Chart(states).mark_geoshape(
+    stroke='white',
+    fill='lightgray'
+).project(
+    type='albersUsa'
+)
+
+
+points = alt.Chart(state_pop).mark_circle().encode(
+    longitude='longitude:Q',
+    latitude='latitude:Q',
+    size='number_of_asthma_cases:Q'
+)
+
+us_map + points
+```
+
+## Derivar otra variable: asthma_cases_per_capita
+
+```{python}
+state_pop['asthma_cases_per_capita'] = state_pop['number_of_asthma_cases']/state_pop['population']
+state_pop
+
+
+us_map + points.encode(
+    size='asthma_cases_per_capita:Q'
+)
+
+```
+
+## Generar el archivo GeoJSON
+
+```{python}
+import geopandas as gdp
+url = "https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip"
+
+gdf_ne = gpd.read_file(url)
+gdf_ne.to_file("paises.geojson", driver="GeoJSON")
+
+```

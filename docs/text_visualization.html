@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Text Visualization – My Quarto Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">My Quarto Project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introducción</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Análisis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-análisis">    
+        <li>
+    <a class="dropdown-item" href="./univariate.html">
+ <span class="dropdown-text">Análisis Univariado</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./bivariate.html">
+ <span class="dropdown-text">Análisis Bivariado</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./static/mapa.html">
+ <span class="dropdown-text">Mapa</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#librerías" id="toc-librerías" class="nav-link active" data-scroll-target="#librerías">Librerías</a></li>
+  <li><a href="#obtener-ds" id="toc-obtener-ds" class="nav-link" data-scroll-target="#obtener-ds">Obtener DS</a></li>
+  <li><a href="#text-visualization" id="toc-text-visualization" class="nav-link" data-scroll-target="#text-visualization">Text visualization</a>
+  <ul class="collapse">
+  <li><a href="#tokenización" id="toc-tokenización" class="nav-link" data-scroll-target="#tokenización">Tokenización</a></li>
+  <li><a href="#stemming-y-lemmatization" id="toc-stemming-y-lemmatization" class="nav-link" data-scroll-target="#stemming-y-lemmatization">Stemming y Lemmatization</a></li>
+  <li><a href="#incluir-el-part-of-speech-pos" id="toc-incluir-el-part-of-speech-pos" class="nav-link" data-scroll-target="#incluir-el-part-of-speech-pos">Incluir el Part-of-speech POS</a></li>
+  <li><a href="#stop-words" id="toc-stop-words" class="nav-link" data-scroll-target="#stop-words">Stop words</a></li>
+  <li><a href="#bag-of-words-bow" id="toc-bag-of-words-bow" class="nav-link" data-scroll-target="#bag-of-words-bow">Bag-of-Words (BOW)</a></li>
+  </ul></li>
+  <li><a href="#wordcloud" id="toc-wordcloud" class="nav-link" data-scroll-target="#wordcloud">Wordcloud</a></li>
+  <li><a href="#bar-chart-the-frecuencia" id="toc-bar-chart-the-frecuencia" class="nav-link" data-scroll-target="#bar-chart-the-frecuencia">Bar chart the frecuencia</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Text Visualization</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="librerías" class="level1">
+<h1>Librerías</h1>
+<div id="60349c5d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Natural Language Toolkit</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># downloading some additional packages and corpora</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt_tab'</span>) <span class="co"># necessary for tokenization</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>) <span class="co"># necessary for lemmatization</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>) <span class="co"># necessary for removal of stop words</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'averaged_perceptron_tagger_eng'</span>) <span class="co"># necessary for POS tagging</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'maxent_ne_chunker'</span> ) <span class="co"># necessary for entity extraction</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'omw-1.4'</span>) <span class="co"># necessary for lemmatization</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'words'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger_eng to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger_eng is already up-to-
+[nltk_data]       date!
+[nltk_data] Downloading package maxent_ne_chunker to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package maxent_ne_chunker is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+[nltk_data] Downloading package words to
+[nltk_data]     /Users/erickedu85/nltk_data...
+[nltk_data]   Package words is already up-to-date!</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="obtener-ds" class="level1">
+<h1>Obtener DS</h1>
+<div id="8a95bed9" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">"https://raw.githubusercontent.com/erickedu85/dataset/master/story.txt"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>r.encoding<span class="op">=</span><span class="st">'utf-8'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>story <span class="op">=</span> r.text</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>story</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'The seventh Sally or how Trurl\'s own perfection led to no good\nBy StanisÅ‚aw Lem, 1965.\nTranslated by Michael Kandel, 1974.\n\nThe Universe is infinite but bounded, and therefore a beam of light, in whatever direction it may travel, will after billions of centuries return -  if powerful enough - to the point of its departure; and it is no different with rumor, that flies about from star to star and makes the rounds of every planet. One day Trurl heard distant reports of two mighty constructor-benefactors, so wise and so accomplished that they had no equal; with this news he ran to Klapaucius, who explained to him that these were not mysterious rivals, but only themselves, for their fame had circumnavigated space. Fame, however, has this fault, that it says nothing of one\'s failures, even when those very failures are the product of a great perfection. And he who would doubt this, let him recall the last of the seven sallies of Trurl, which was undertaken without Klapaucius, whom certain urgent duties kept at home at the time.\n\nIn those days Trurl was exceedingly vain, receiving all marks of veneration and honor paid to him as his due and a perfectly normal thing. He was heading north in his ship, as he was the least familiar with that region, and had flown through the void for quite some time, passing spheres full of the clamor of war as well as spheres that had finally obtained the perfect peace of desolation, when suddenly a little planet came into view, really more of a stray fragment of matter than a planet.\n\nOn the surface of this chunk of rock someone was running back and forth, jumping and waving his arms in the strangest way. Astonished by a scene of such total loneliness and concerned by those wild gestures of despair, and perhaps of anger as well, Trurl quickly landed.\n\nHe was approached by a personage of tremendous hauteur, iridium and vanadium all over and with a great deal of clanging and clanking, who introduced himself as Excelsius the Tartarian, ruler of Pancreon and Cyspenderora; the inhabitants of both these kingdoms had, in a fit of regicidal madness, driven His Highness from the throne and exiled him to this barren asteroid, eternally adrift among the dark swells and currents of gravitation.\n\nLearning in turn the identity of his visitor, the deposed monarch began to insist that Trurl - who after all was something of a professional when it came to good deeds - immediately restore him to his former position. The thought of such a turn of events brought the flame of vengeance to the monarch\'s eyes, and his iron fingers clutched the air, as if already closing around the throats of his beloved subjects.\n\nNow Trurl had no intention of complying with this request of Excelsius, as doing so would bring about untold evil and suffering, yet at the same time he wished somehow to comfort and console the humiliated king. Thinking a moment or two, he came to the conclusion that, even in this case, not all was lost, for it would be possible to satisfy the king completely - without putting his former subjects in jeopardy. And so, rolling up his sleeves and summoning up all his mastery, Trurl built the king an entirely new kingdom. There were plenty of towns, rivers, mountains, forests, and brooks, a sky with clouds, armies full of derring-do, citadels, castles, and ladies\' chambers; and there were marketplaces, gaudy and gleaming in the sun, days of back-breaking labor, nights full of dancing and song until dawn, and the gay clatter of swordplay. Trurl also carefully set into this kingdom a fabulous capital, all in marble and alabaster, and assembled a council of hoary sages, and winter palaces and summer villas, plots, conspirators, false witnesses, nurses, informers, teams of magnificent steeds, and plumes waving crimson in the wind; and then he crisscrossed that atmosphere with silver fanfares and twenty-one gun salutes, also threw in the necessary handful of traitors, another of heroes, added a pinch of prophets and seers, and one messiah and one great poet each, after which he bent over and set the works in motion, deftly making last-minute adjustments with his microscopic tools as it ran, and he gave the women of that kingdom beauty, the men - sullen silence and surliness when drunk, the officials - arrogance and servility, the astronomers - an enthusiasm for stars, and the children - a great capacity for noise. And all of this, connected, mounted and ground to precision, fit into a box, and not a very large box, but just the size that could be carried about with ease. This Trurl presented to Excelsius, to rule and have dominion over forever; but first he showed him where the input and output of his brand-new kingdom were, and how to program wars, quell rebellions, exact tribute, collect taxes, and also instructed him in the critical points and transition states of that microminiaturized society - in other words the maxima and minima of palace coups and revolutions -  and explained everything so well that the king, an old hand in the running of tyrannies, instantly grasped the directions and, without hesitation, while the constructor watched, issued a few trial proclamations, correctly manipulating the control knobs, which were carved with imperial eagles and regal lions. These proclamations declared a state of emergency, martial law, a curfew, and a special levy. After a year had passed in the kingdom, which amounted to hardly a minute for Trurl and the king, by an act of the greatest magnanimity - that is, by a flick of the finger at the controls - the king abolished one death penalty, lightened the levy, and deigned to annul the state of emergency, whereupon a tumultuous cry of gratitude, like the squeaking of tiny mice lifted by their tails, rose up from the box, and through its curved glass cover one could see, on the dusty highways and along the banks of lazy rivers that reflected the fluffy clouds, the people rejoicing and praising the great and unsurpassed benevolence of their sovereign lord.\n\nAnd so, though at first he had felt insulted by Trurl\'s gift, in that the kingdom was too small and very like a child\'s toy, the monarch saw that the thick glass lid made everything inside seem large; perhaps too he dully understood that size was not what mattered here, for government is not measured in meters and kilograms, and emotions are somehow the same, whether experienced by giants or dwarfs - and so he thanked the constructor, if somewhat stiffly. Who knows, he might even have liked to order him thrown in chains and tortured to death, just to be safe - that would have been a sure way of nipping in the bud any gossip about how some common vagabond tinkerer presented a mighty monarch with a kingdom. Excelsius was sensible enough, however, to see that this was out of the question, owing to a very fundamental disproportion, for fleas could sooner take their host into captivity than the king\'s army seize Trurl. So with another cold nod, he stuck his orb and scepter under his arm, lifted the box kingdom with a grunt, and took it to his humble hut of exile. And as blazing day alternated with murky night outside, according to the rhythm of the asteroid\'s rotation, the king, who was acknowledged by his subjects as the greatest in the world, diligently reigned, bidding this, forbidding that, beheading, rewarding - in all these ways incessantly spurring his little ones on to perfect fealty and worship of the throne.\n\nAs for Trurl, he returned home and related to his friend Klapaucius, not without pride, how he had employed his constructor\'s genius to indulge the autocratic aspirations of Excelsius and, at the same time, safeguard the democratic aspirations of his former subjects. But Klapaucius, surprisingly enough, had no words of praise for Trurl; in fact, there seemed to be rebuke in his expression.\n\n"Have I understood you correctly?" he said at last. "You gave that brutal despot, that born slave master, that slavering sadist of a pain- monger, you gave him a whole civilization to rule and have dominion over forever? And you tell me, moreover, of the cries of joy brought on by the repeal of a fraction of his cruel decrees! Trurl, how could you have done such a thing?"\n\n"You must be joking!" Trurl exclaimed. "Really, the whole kingdom fits into a box three feet by two by two and a half ... it\'s only a model...."\n\n"A model of what?"\n\n"What do you mean, of what? Of a civilization, obviously, except that it\'s a hundred million times smaller.â€\x9d\n\n"And how do you know there aren\'t civilizations a hundred million times larger than our own? And if there were, would ours then be a model? And what importance do dimensions have anyway? In that box kingdom, doesn\'t a journey from the capital to one of the corners take months - for those inhabitants? And don\'t they suffer, don\'t they know the burden of labor, don\'t they die?"\n\n"Now just a minute, you know yourself that all these processes take place only because I programmed them, and so they aren\'t genuine...."\n\n"Aren\'t genuine? You mean to say the box is empty, and the parades, tortures, and beheadings are merely an illusion?"\n\n"Not an illusion, no, since they have reality, though purely as certain microscopic phenomena, which I produced by manipulating atoms," said Trurl. "The point is, these births, loves, acts of heroism, and denunciations are nothing but the minuscule capering of electrons in space, precisely arranged by the skill of my nonlinear craft, which - "\n\n"Enough of your boasting, not another word!" Klapaucius snapped. "Are these processes self-organizing or not?"\n\n"Of course they are!"\n\n"And they occur among infinitesimal clouds of electrical charge?"\n\n"You know they do.""And the phenomenological events of dawns, sunsets, and bloody battles are generated by the concatenation of real variables?"\n\n"Certainly."\n\n"And are not we as well, if you examine us physically, mechanistically, statistically, and meticulously, nothing but the miniscule capering of electron clouds? Positive and negative charges arranged in space? And is our existence not the result of subatomic collisions and the interplay of particles, though we ourselves perceive those molecular cartwheels as fear, longing, or meditation? And when you daydream, what transpires within your brain but the binary algebra of connecting and disconnecting circuits, the continual meandering of electrons?"\n\n"What, Klapaucius, would you equate our existence with that of an imitation kingdom locked up in some glass box?!" cried Trurl. "No, really, that\'s going too far! My purpose was simply to fashion a simulator of statehood, a model cybernetically perfect, nothing more!"\n\n"Trurl! Our perfection is our curse, for it draws down upon our every endeavor no end of unforeseeable consequences!" Klapaucius said in a stentorian voice. "If an imperfect imitator, wishing to inflict pain, were to build himself a crude idol of wood or wax, and further give it some makeshift semblance of a sentient being, his torture of the thing would be a paltry mockery indeed! But consider a succession of improvements on this practice! Consider the next sculptor, who builds a doll with a recording in its belly, that it may groan beneath his blows; consider a doll which, when beaten, begs for mercy, no longer a crude idol, but a homeostat; consider a doll that sheds tears, a doll that bleeds, a doll that fears death, though it also longs for the peace that only death can bring! Don\'t you see, when the imitator is perfect, so must be the imitation, and the semblance becomes the truth, the pretense a reality! Trurl, you took an untold number of creatures capable of suffering and abandoned them forever to the rule of a wicked tyrant.... Trurl, you have committed a terrible crime!"\n\n"Sheer sophistry!" shouted Trurl, all the louder because he felt the force of his friend\'s argument. "Electrons meander not only in our brains, but in phonograph records as well, which proves nothing, and certainly gives no grounds for such hypostatical analogies! The subjects of that monster Excelsius do in fact die when decapitated, sob, fight, and fall in love, since that is how I set up the parameters, but it\'s impossible to say, Klapaucius, that they feel anything in the process - the electrons jumping around in their heads will tell you nothing of that!"\n\n"And if I were to look inside your head, I would also see nothing but electrons," replied Klapaucius. "Come now, don\'t pretend not to understand what I\'m saying, I know you\'re not that stupid! A phonograph record won\'t run errands for you, won\'t beg for mercy or fall on its knees! You say there\'s no way of knowing whether Excelsius\'s subjects groan, when beaten, purely because of the electrons hopping about inside - like wheels grinding out the mimicry of a voice - or whether they really groan, that is, because they honestly experience the pain? A pretty distinction, this! No, Trurl, a sufferer is not one who hands you his suffering, that you may touch it, weigh it, bite it like a coin; a sufferer is one who behaves like a sufferer! Prove to me here and now, once and for all, that they do not feel, that they do not think, that they do not in any way exist as being conscious of their enclosure between the two abysses of oblivion - the abyss before birth and the abyss that follows death - prove this to me, Trurl, and I\'ll leave you be! Prove that you only imitated suffering, and did not create it!\n\n"You know perfectly well that\'s impossible," answered Trurl quietly. "Even before I took my instruments in hand, when the box was still empty, I had to anticipate the possibility of precisely such a proof - in order to rule it out. For otherwise the monarch of that kingdom sooner or later would have gotten the impression that his subjects were not real subjects at all, but puppets, marionettes. Try to understand, there was no other way to do it! Anything that would have destroyed in the littlest way the illusion of complete reality would have also destroyed the importance, the dignity of governing, and turned it into nothing but a mechanical game...."\n\n"I understand, I understand all too well!" cried Klapaucius. "Your intentions were the noblest - you only sought to construct a kingdom as lifelike as possible, so similar to a real kingdom, that no one, absolutely no one, could ever tell the difference, and in this, I am afraid, you were successful! Only hours have passed since your return, but for them, the ones imprisoned in that box, whole centuries have gone by - how many beings, how many lives wasted, and all to gratify and feed the vanity of King Excelsius!"\n\nWithout another word Trurl rushed back to his ship, but saw that his friend was coming with him. When he had blasted off into space, pointed the bow between two great clusters of eternal flame and opened the throttle all the way, Klapaucius said:\n\n"Trurl, you\'re hopeless. You always act first, think later. And now what do you intend to do when we get there?"\n\n"I\'ll take the kingdom away from him!"\n\n"And what will you do with it?"\n\n"Destroy it!" Trurl was about to shout, but choked on the first syllable when he realized what he was saying. Finally he mumbled:\n\n"I\'ll hold an election. Let them choose just rulers from among themselves."\n\n"You programmed them all to be feudal lords or shiftless vassals. What good would an election do? First you\'d have to undo the entire structure of the kingdom, then assemble from scratch ...""And where," exclaimed Trurl, "does the changing of structures end and the tampering with minds begin?!" Klapaucius had no answer for this, and they flew on in gloomy silence, till the planet of Excelsius came into view. As they circled it, preparing to land, they beheld a most amazing sight.\n\nThe entire planet was covered with countless signs of intelligent life. Microscopic bridges, like tiny lines, spanned every rill and rivulet, while the puddles, reflecting the stars, were full of microscopic boats like floating chips.... The night side of the sphere was dotted with glimmering cities, and on the day side one could make out flourishing metropolises, though the inhabitants themselves were much too little to observe, even through the strongest lens. Of the king there was not a trace, as if the earth had swallowed him up.\n\n"He isn\'t here," said Trurl in an awed whisper. "What have they done with him? Somehow they managed to break through the walls of their box and occupy the asteroid...."\n\n"Look!" said Klapaucius, pointing to a little cloud no larger than a thimble and shaped like a mushroom; it slowly rose into the atmosphere. "They\'ve discovered atomic energy.... And over there - you see that bit of glass? It\'s the remains of the box, they\'ve made it into some sort of temple...."\n\n"I don\'t understand. It was only a model, after all. A process with a large number of parameters, a simulation, a mock-up for a monarch to practice on, with the necessary feedback, variables, multistats ..." muttered Trurl, dumbfounded.\n\n"Yes. But you made the unforgivable mistake of overperfecting your replica. Not wanting to build a mere clocklike mechanism, you inadvertently - in your punctilious way - created that which was possible, logical, and inevitable, that which became the very antithesis of a mechanism...."\n\n"Please, no more!" cried Trurl. And they looked out upon the asteroid in silence, when suddenly something bumped their ship, or rather grazed it slightly. They saw this object, for it was illuminated by the thin ribbon of flame that issued from its tail. A ship, probably, or perhaps an artificial satellite, though remarkably similar to one of those steel boots the tyrant Excelsius used to wear. And when the constructors raised their eyes, they beheld a heavenly body shining high above the tiny planet -  it hadn\'t been there previously - and they recognized, in that cold, pale orb, the stern features of Excelsius himself, who had in this way become the Moon of the Microminians.'</code></pre>
+</div>
+</div>
+</section>
+<section id="text-visualization" class="level1">
+<h1>Text visualization</h1>
+<section id="tokenización" class="level2">
+<h2 class="anchored" data-anchor-id="tokenización">Tokenización</h2>
+<div id="3eca691a" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk <span class="im">import</span> word_tokenize</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> word_tokenize(story)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>words[:<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>['The',
+ 'seventh',
+ 'Sally',
+ 'or',
+ 'how',
+ 'Trurl',
+ "'s",
+ 'own',
+ 'perfection',
+ 'led',
+ 'to',
+ 'no',
+ 'good',
+ 'By',
+ 'StanisÅ‚aw',
+ 'Lem',
+ ',',
+ '1965',
+ '.',
+ 'Translated']</code></pre>
+</div>
+</div>
+</section>
+<section id="stemming-y-lemmatization" class="level2">
+<h2 class="anchored" data-anchor-id="stemming-y-lemmatization">Stemming y Lemmatization</h2>
+<div id="4f47f11d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer <span class="im">as</span> stemmer</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer <span class="im">as</span> lemmatizer</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> wordnet</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">'changing'</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Stemming: "</span>,stemmer().stem(word))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Lemmatization: "</span>, lemmatizer().lemmatize(word,pos<span class="op">=</span>wordnet.VERB))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Stemming:  chang
+Lemmatization:  change</code></pre>
+</div>
+</div>
+</section>
+<section id="incluir-el-part-of-speech-pos" class="level2">
+<h2 class="anchored" data-anchor-id="incluir-el-part-of-speech-pos">Incluir el Part-of-speech POS</h2>
+<div id="6f5685b4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk <span class="im">import</span> pos_tag</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> pos_tag(words)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>pos[:<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[('The', 'DT'),
+ ('seventh', 'JJ'),
+ ('Sally', 'NNP'),
+ ('or', 'CC'),
+ ('how', 'WRB'),
+ ('Trurl', 'NNP'),
+ ("'s", 'POS'),
+ ('own', 'JJ'),
+ ('perfection', 'NN'),
+ ('led', 'VBD'),
+ ('to', 'TO'),
+ ('no', 'DT'),
+ ('good', 'JJ'),
+ ('By', 'IN'),
+ ('StanisÅ‚aw', 'NNP'),
+ ('Lem', 'NNP'),
+ (',', ','),
+ ('1965', 'CD'),
+ ('.', '.'),
+ ('Translated', 'VBN')]</code></pre>
+</div>
+</div>
+</section>
+<section id="stop-words" class="level2">
+<h2 class="anchored" data-anchor-id="stop-words">Stop words</h2>
+<div id="21376434" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords <span class="im">as</span> stop</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> stop.words(<span class="st">'english'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>stopwords</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> nltk.word_tokenize(story.lower())</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>tokens</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>lettertokens <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> tokens <span class="cf">if</span> word.isalpha()]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>lettertokens</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>without_stopwords <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> lettertokens <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stopwords]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>without_stopwords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>['seventh',
+ 'sally',
+ 'trurl',
+ 'perfection',
+ 'led',
+ 'good',
+ 'lem',
+ 'translated',
+ 'michael',
+ 'kandel',
+ 'universe',
+ 'infinite',
+ 'bounded',
+ 'therefore',
+ 'beam',
+ 'light',
+ 'whatever',
+ 'direction',
+ 'may',
+ 'travel',
+ 'billions',
+ 'centuries',
+ 'return',
+ 'powerful',
+ 'enough',
+ 'point',
+ 'departure',
+ 'different',
+ 'rumor',
+ 'flies',
+ 'star',
+ 'star',
+ 'makes',
+ 'rounds',
+ 'every',
+ 'planet',
+ 'one',
+ 'day',
+ 'trurl',
+ 'heard',
+ 'distant',
+ 'reports',
+ 'two',
+ 'mighty',
+ 'wise',
+ 'accomplished',
+ 'equal',
+ 'news',
+ 'ran',
+ 'klapaucius',
+ 'explained',
+ 'mysterious',
+ 'rivals',
+ 'fame',
+ 'circumnavigated',
+ 'space',
+ 'fame',
+ 'however',
+ 'fault',
+ 'says',
+ 'nothing',
+ 'one',
+ 'failures',
+ 'even',
+ 'failures',
+ 'product',
+ 'great',
+ 'perfection',
+ 'would',
+ 'doubt',
+ 'let',
+ 'recall',
+ 'last',
+ 'seven',
+ 'sallies',
+ 'trurl',
+ 'undertaken',
+ 'without',
+ 'klapaucius',
+ 'certain',
+ 'urgent',
+ 'duties',
+ 'kept',
+ 'home',
+ 'time',
+ 'days',
+ 'trurl',
+ 'exceedingly',
+ 'vain',
+ 'receiving',
+ 'marks',
+ 'veneration',
+ 'honor',
+ 'paid',
+ 'due',
+ 'perfectly',
+ 'normal',
+ 'thing',
+ 'heading',
+ 'north',
+ 'ship',
+ 'least',
+ 'familiar',
+ 'region',
+ 'flown',
+ 'void',
+ 'quite',
+ 'time',
+ 'passing',
+ 'spheres',
+ 'full',
+ 'clamor',
+ 'war',
+ 'well',
+ 'spheres',
+ 'finally',
+ 'obtained',
+ 'perfect',
+ 'peace',
+ 'desolation',
+ 'suddenly',
+ 'little',
+ 'planet',
+ 'came',
+ 'view',
+ 'really',
+ 'stray',
+ 'fragment',
+ 'matter',
+ 'planet',
+ 'surface',
+ 'chunk',
+ 'rock',
+ 'someone',
+ 'running',
+ 'back',
+ 'forth',
+ 'jumping',
+ 'waving',
+ 'arms',
+ 'strangest',
+ 'way',
+ 'astonished',
+ 'scene',
+ 'total',
+ 'loneliness',
+ 'concerned',
+ 'wild',
+ 'gestures',
+ 'despair',
+ 'perhaps',
+ 'anger',
+ 'well',
+ 'trurl',
+ 'quickly',
+ 'landed',
+ 'approached',
+ 'personage',
+ 'tremendous',
+ 'hauteur',
+ 'iridium',
+ 'vanadium',
+ 'great',
+ 'deal',
+ 'clanging',
+ 'clanking',
+ 'introduced',
+ 'excelsius',
+ 'tartarian',
+ 'ruler',
+ 'pancreon',
+ 'cyspenderora',
+ 'inhabitants',
+ 'kingdoms',
+ 'fit',
+ 'regicidal',
+ 'madness',
+ 'driven',
+ 'highness',
+ 'throne',
+ 'exiled',
+ 'barren',
+ 'asteroid',
+ 'eternally',
+ 'adrift',
+ 'among',
+ 'dark',
+ 'swells',
+ 'currents',
+ 'gravitation',
+ 'learning',
+ 'turn',
+ 'identity',
+ 'visitor',
+ 'deposed',
+ 'monarch',
+ 'began',
+ 'insist',
+ 'trurl',
+ 'something',
+ 'professional',
+ 'came',
+ 'good',
+ 'deeds',
+ 'immediately',
+ 'restore',
+ 'former',
+ 'position',
+ 'thought',
+ 'turn',
+ 'events',
+ 'brought',
+ 'flame',
+ 'vengeance',
+ 'monarch',
+ 'eyes',
+ 'iron',
+ 'fingers',
+ 'clutched',
+ 'air',
+ 'already',
+ 'closing',
+ 'around',
+ 'throats',
+ 'beloved',
+ 'subjects',
+ 'trurl',
+ 'intention',
+ 'complying',
+ 'request',
+ 'excelsius',
+ 'would',
+ 'bring',
+ 'untold',
+ 'evil',
+ 'suffering',
+ 'yet',
+ 'time',
+ 'wished',
+ 'somehow',
+ 'comfort',
+ 'console',
+ 'humiliated',
+ 'king',
+ 'thinking',
+ 'moment',
+ 'two',
+ 'came',
+ 'conclusion',
+ 'even',
+ 'case',
+ 'lost',
+ 'would',
+ 'possible',
+ 'satisfy',
+ 'king',
+ 'completely',
+ 'without',
+ 'putting',
+ 'former',
+ 'subjects',
+ 'jeopardy',
+ 'rolling',
+ 'sleeves',
+ 'summoning',
+ 'mastery',
+ 'trurl',
+ 'built',
+ 'king',
+ 'entirely',
+ 'new',
+ 'kingdom',
+ 'plenty',
+ 'towns',
+ 'rivers',
+ 'mountains',
+ 'forests',
+ 'brooks',
+ 'sky',
+ 'clouds',
+ 'armies',
+ 'full',
+ 'citadels',
+ 'castles',
+ 'ladies',
+ 'chambers',
+ 'marketplaces',
+ 'gaudy',
+ 'gleaming',
+ 'sun',
+ 'days',
+ 'labor',
+ 'nights',
+ 'full',
+ 'dancing',
+ 'song',
+ 'dawn',
+ 'gay',
+ 'clatter',
+ 'swordplay',
+ 'trurl',
+ 'also',
+ 'carefully',
+ 'set',
+ 'kingdom',
+ 'fabulous',
+ 'capital',
+ 'marble',
+ 'alabaster',
+ 'assembled',
+ 'council',
+ 'hoary',
+ 'sages',
+ 'winter',
+ 'palaces',
+ 'summer',
+ 'villas',
+ 'plots',
+ 'conspirators',
+ 'false',
+ 'witnesses',
+ 'nurses',
+ 'informers',
+ 'teams',
+ 'magnificent',
+ 'steeds',
+ 'plumes',
+ 'waving',
+ 'crimson',
+ 'wind',
+ 'crisscrossed',
+ 'atmosphere',
+ 'silver',
+ 'fanfares',
+ 'gun',
+ 'salutes',
+ 'also',
+ 'threw',
+ 'necessary',
+ 'handful',
+ 'traitors',
+ 'another',
+ 'heroes',
+ 'added',
+ 'pinch',
+ 'prophets',
+ 'seers',
+ 'one',
+ 'messiah',
+ 'one',
+ 'great',
+ 'poet',
+ 'bent',
+ 'set',
+ 'works',
+ 'motion',
+ 'deftly',
+ 'making',
+ 'adjustments',
+ 'microscopic',
+ 'tools',
+ 'ran',
+ 'gave',
+ 'women',
+ 'kingdom',
+ 'beauty',
+ 'men',
+ 'sullen',
+ 'silence',
+ 'surliness',
+ 'drunk',
+ 'officials',
+ 'arrogance',
+ 'servility',
+ 'astronomers',
+ 'enthusiasm',
+ 'stars',
+ 'children',
+ 'great',
+ 'capacity',
+ 'noise',
+ 'connected',
+ 'mounted',
+ 'ground',
+ 'precision',
+ 'fit',
+ 'box',
+ 'large',
+ 'box',
+ 'size',
+ 'could',
+ 'carried',
+ 'ease',
+ 'trurl',
+ 'presented',
+ 'excelsius',
+ 'rule',
+ 'dominion',
+ 'forever',
+ 'first',
+ 'showed',
+ 'input',
+ 'output',
+ 'kingdom',
+ 'program',
+ 'wars',
+ 'quell',
+ 'rebellions',
+ 'exact',
+ 'tribute',
+ 'collect',
+ 'taxes',
+ 'also',
+ 'instructed',
+ 'critical',
+ 'points',
+ 'transition',
+ 'states',
+ 'microminiaturized',
+ 'society',
+ 'words',
+ 'maxima',
+ 'minima',
+ 'palace',
+ 'coups',
+ 'revolutions',
+ 'explained',
+ 'everything',
+ 'well',
+ 'king',
+ 'old',
+ 'hand',
+ 'running',
+ 'tyrannies',
+ 'instantly',
+ 'grasped',
+ 'directions',
+ 'without',
+ 'hesitation',
+ 'constructor',
+ 'watched',
+ 'issued',
+ 'trial',
+ 'proclamations',
+ 'correctly',
+ 'manipulating',
+ 'control',
+ 'knobs',
+ 'carved',
+ 'imperial',
+ 'eagles',
+ 'regal',
+ 'lions',
+ 'proclamations',
+ 'declared',
+ 'state',
+ 'emergency',
+ 'martial',
+ 'law',
+ 'curfew',
+ 'special',
+ 'levy',
+ 'year',
+ 'passed',
+ 'kingdom',
+ 'amounted',
+ 'hardly',
+ 'minute',
+ 'trurl',
+ 'king',
+ 'act',
+ 'greatest',
+ 'magnanimity',
+ 'flick',
+ 'finger',
+ 'controls',
+ 'king',
+ 'abolished',
+ 'one',
+ 'death',
+ 'penalty',
+ 'lightened',
+ 'levy',
+ 'deigned',
+ 'annul',
+ 'state',
+ 'emergency',
+ 'whereupon',
+ 'tumultuous',
+ 'cry',
+ 'gratitude',
+ 'like',
+ 'squeaking',
+ 'tiny',
+ 'mice',
+ 'lifted',
+ 'tails',
+ 'rose',
+ 'box',
+ 'curved',
+ 'glass',
+ 'cover',
+ 'one',
+ 'could',
+ 'see',
+ 'dusty',
+ 'highways',
+ 'along',
+ 'banks',
+ 'lazy',
+ 'rivers',
+ 'reflected',
+ 'fluffy',
+ 'clouds',
+ 'people',
+ 'rejoicing',
+ 'praising',
+ 'great',
+ 'unsurpassed',
+ 'benevolence',
+ 'sovereign',
+ 'lord',
+ 'though',
+ 'first',
+ 'felt',
+ 'insulted',
+ 'trurl',
+ 'gift',
+ 'kingdom',
+ 'small',
+ 'like',
+ 'child',
+ 'toy',
+ 'monarch',
+ 'saw',
+ 'thick',
+ 'glass',
+ 'lid',
+ 'made',
+ 'everything',
+ 'inside',
+ 'seem',
+ 'large',
+ 'perhaps',
+ 'dully',
+ 'understood',
+ 'size',
+ 'mattered',
+ 'government',
+ 'measured',
+ 'meters',
+ 'kilograms',
+ 'emotions',
+ 'somehow',
+ 'whether',
+ 'experienced',
+ 'giants',
+ 'dwarfs',
+ 'thanked',
+ 'constructor',
+ 'somewhat',
+ 'stiffly',
+ 'knows',
+ 'might',
+ 'even',
+ 'liked',
+ 'order',
+ 'thrown',
+ 'chains',
+ 'tortured',
+ 'death',
+ 'safe',
+ 'would',
+ 'sure',
+ 'way',
+ 'nipping',
+ 'bud',
+ 'gossip',
+ 'common',
+ 'vagabond',
+ 'tinkerer',
+ 'presented',
+ 'mighty',
+ 'monarch',
+ 'kingdom',
+ 'excelsius',
+ 'sensible',
+ 'enough',
+ 'however',
+ 'see',
+ 'question',
+ 'owing',
+ 'fundamental',
+ 'disproportion',
+ 'fleas',
+ 'could',
+ 'sooner',
+ 'take',
+ 'host',
+ 'captivity',
+ 'king',
+ 'army',
+ 'seize',
+ 'trurl',
+ 'another',
+ 'cold',
+ 'nod',
+ 'stuck',
+ 'orb',
+ 'scepter',
+ 'arm',
+ 'lifted',
+ 'box',
+ 'kingdom',
+ 'grunt',
+ 'took',
+ 'humble',
+ 'hut',
+ 'exile',
+ 'blazing',
+ 'day',
+ 'alternated',
+ 'murky',
+ 'night',
+ 'outside',
+ 'according',
+ 'rhythm',
+ 'asteroid',
+ 'rotation',
+ 'king',
+ 'acknowledged',
+ 'subjects',
+ 'greatest',
+ 'world',
+ 'diligently',
+ 'reigned',
+ 'bidding',
+ 'forbidding',
+ 'beheading',
+ 'rewarding',
+ 'ways',
+ 'incessantly',
+ 'spurring',
+ 'little',
+ 'ones',
+ 'perfect',
+ 'fealty',
+ 'worship',
+ 'throne',
+ 'trurl',
+ 'returned',
+ 'home',
+ 'related',
+ 'friend',
+ 'klapaucius',
+ 'without',
+ 'pride',
+ 'employed',
+ 'constructor',
+ 'genius',
+ 'indulge',
+ 'autocratic',
+ 'aspirations',
+ 'excelsius',
+ 'time',
+ 'safeguard',
+ 'democratic',
+ 'aspirations',
+ 'former',
+ 'subjects',
+ 'klapaucius',
+ 'surprisingly',
+ 'enough',
+ 'words',
+ 'praise',
+ 'trurl',
+ 'fact',
+ 'seemed',
+ 'rebuke',
+ 'expression',
+ 'understood',
+ 'correctly',
+ 'said',
+ 'last',
+ 'gave',
+ 'brutal',
+ 'despot',
+ 'born',
+ 'slave',
+ 'master',
+ 'slavering',
+ 'sadist',
+ 'monger',
+ 'gave',
+ 'whole',
+ 'civilization',
+ 'rule',
+ 'dominion',
+ 'forever',
+ 'tell',
+ 'moreover',
+ 'cries',
+ 'joy',
+ 'brought',
+ 'repeal',
+ 'fraction',
+ 'cruel',
+ 'decrees',
+ 'trurl',
+ 'could',
+ 'done',
+ 'thing',
+ 'must',
+ 'joking',
+ 'trurl',
+ 'exclaimed',
+ 'really',
+ 'whole',
+ 'kingdom',
+ 'fits',
+ 'box',
+ 'three',
+ 'feet',
+ 'two',
+ 'two',
+ 'half',
+ 'model',
+ 'model',
+ 'mean',
+ 'civilization',
+ 'obviously',
+ 'except',
+ 'hundred',
+ 'million',
+ 'times',
+ 'know',
+ 'civilizations',
+ 'hundred',
+ 'million',
+ 'times',
+ 'larger',
+ 'would',
+ 'model',
+ 'importance',
+ 'dimensions',
+ 'anyway',
+ 'box',
+ 'kingdom',
+ 'journey',
+ 'capital',
+ 'one',
+ 'corners',
+ 'take',
+ 'months',
+ 'inhabitants',
+ 'suffer',
+ 'know',
+ 'burden',
+ 'labor',
+ 'die',
+ 'minute',
+ 'know',
+ 'processes',
+ 'take',
+ 'place',
+ 'programmed',
+ 'genuine',
+ 'genuine',
+ 'mean',
+ 'say',
+ 'box',
+ 'empty',
+ 'parades',
+ 'tortures',
+ 'beheadings',
+ 'merely',
+ 'illusion',
+ 'illusion',
+ 'since',
+ 'reality',
+ 'though',
+ 'purely',
+ 'certain',
+ 'microscopic',
+ 'phenomena',
+ 'produced',
+ 'manipulating',
+ 'atoms',
+ 'said',
+ 'trurl',
+ 'point',
+ 'births',
+ 'loves',
+ 'acts',
+ 'heroism',
+ 'denunciations',
+ 'nothing',
+ 'minuscule',
+ 'capering',
+ 'electrons',
+ 'space',
+ 'precisely',
+ 'arranged',
+ 'skill',
+ 'nonlinear',
+ 'craft',
+ 'enough',
+ 'boasting',
+ 'another',
+ 'word',
+ 'klapaucius',
+ 'snapped',
+ 'processes',
+ 'course',
+ 'occur',
+ 'among',
+ 'infinitesimal',
+ 'clouds',
+ 'electrical',
+ 'charge',
+ 'know',
+ 'phenomenological',
+ 'events',
+ 'dawns',
+ 'sunsets',
+ 'bloody',
+ 'battles',
+ 'generated',
+ 'concatenation',
+ 'real',
+ 'variables',
+ 'certainly',
+ 'well',
+ 'examine',
+ 'us',
+ 'physically',
+ 'mechanistically',
+ 'statistically',
+ 'meticulously',
+ 'nothing',
+ 'miniscule',
+ 'capering',
+ 'electron',
+ 'clouds',
+ 'positive',
+ 'negative',
+ 'charges',
+ 'arranged',
+ 'space',
+ 'existence',
+ 'result',
+ 'subatomic',
+ 'collisions',
+ 'interplay',
+ 'particles',
+ 'though',
+ 'perceive',
+ 'molecular',
+ 'cartwheels',
+ 'fear',
+ 'longing',
+ 'meditation',
+ 'daydream',
+ 'transpires',
+ 'within',
+ 'brain',
+ 'binary',
+ 'algebra',
+ 'connecting',
+ 'disconnecting',
+ 'circuits',
+ 'continual',
+ 'meandering',
+ 'electrons',
+ 'klapaucius',
+ 'would',
+ 'equate',
+ 'existence',
+ 'imitation',
+ 'kingdom',
+ 'locked',
+ 'glass',
+ 'box',
+ 'cried',
+ 'trurl',
+ 'really',
+ 'going',
+ 'far',
+ 'purpose',
+ 'simply',
+ 'fashion',
+ 'simulator',
+ 'statehood',
+ 'model',
+ 'cybernetically',
+ 'perfect',
+ 'nothing',
+ 'trurl',
+ 'perfection',
+ 'curse',
+ 'draws',
+ 'upon',
+ 'every',
+ 'endeavor',
+ 'end',
+ 'unforeseeable',
+ 'consequences',
+ 'klapaucius',
+ 'said',
+ 'stentorian',
+ 'voice',
+ 'imperfect',
+ 'imitator',
+ 'wishing',
+ 'inflict',
+ 'pain',
+ 'build',
+ 'crude',
+ 'idol',
+ 'wood',
+ 'wax',
+ 'give',
+ 'makeshift',
+ 'semblance',
+ 'sentient',
+ 'torture',
+ 'thing',
+ 'would',
+ 'paltry',
+ 'mockery',
+ 'indeed',
+ 'consider',
+ 'succession',
+ 'improvements',
+ 'practice',
+ 'consider',
+ 'next',
+ 'sculptor',
+ 'builds',
+ 'doll',
+ 'recording',
+ 'belly',
+ 'may',
+ 'groan',
+ 'beneath',
+ 'blows',
+ 'consider',
+ 'doll',
+ 'beaten',
+ 'begs',
+ 'mercy',
+ 'longer',
+ 'crude',
+ 'idol',
+ 'homeostat',
+ 'consider',
+ 'doll',
+ 'sheds',
+ 'tears',
+ 'doll',
+ 'bleeds',
+ 'doll',
+ 'fears',
+ 'death',
+ 'though',
+ 'also',
+ 'longs',
+ 'peace',
+ 'death',
+ 'bring',
+ 'see',
+ 'imitator',
+ 'perfect',
+ 'must',
+ 'imitation',
+ 'semblance',
+ 'becomes',
+ 'truth',
+ 'pretense',
+ 'reality',
+ 'trurl',
+ 'took',
+ 'untold',
+ 'number',
+ 'creatures',
+ 'capable',
+ 'suffering',
+ 'abandoned',
+ 'forever',
+ 'rule',
+ 'wicked',
+ 'tyrant',
+ 'trurl',
+ 'committed',
+ 'terrible',
+ 'crime',
+ 'sheer',
+ 'sophistry',
+ 'shouted',
+ 'trurl',
+ ...]</code></pre>
+</div>
+</div>
+</section>
+<section id="bag-of-words-bow" class="level2">
+<h2 class="anchored" data-anchor-id="bag-of-words-bow">Bag-of-Words (BOW)</h2>
+<div id="eda045c4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bow <span class="op">=</span> {}</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> without_stopwords:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    bow[word] <span class="op">=</span> without_stopwords.count(word)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>bow</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>words_frequency <span class="op">=</span> <span class="bu">sorted</span>(bow.items(),key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>words_frequency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>[('trurl', 33),
+ ('kingdom', 16),
+ ('one', 13),
+ ('klapaucius', 13),
+ ('would', 12),
+ ('box', 12),
+ ('excelsius', 11),
+ ('king', 10),
+ ('way', 9),
+ ('nothing', 8),
+ ('subjects', 8),
+ ('like', 8),
+ ('well', 7),
+ ('planet', 6),
+ ('two', 6),
+ ('great', 6),
+ ('monarch', 6),
+ ('also', 6),
+ ('could', 6),
+ ('though', 6),
+ ('said', 6),
+ ('know', 6),
+ ('electrons', 6),
+ ('even', 5),
+ ('without', 5),
+ ('first', 5),
+ ('death', 5),
+ ('see', 5),
+ ('model', 5),
+ ('doll', 5),
+ ('understand', 5),
+ ('enough', 4),
+ ('space', 4),
+ ('time', 4),
+ ('ship', 4),
+ ('full', 4),
+ ('perfect', 4),
+ ('little', 4),
+ ('came', 4),
+ ('really', 4),
+ ('asteroid', 4),
+ ('suffering', 4),
+ ('clouds', 4),
+ ('another', 4),
+ ('microscopic', 4),
+ ('rule', 4),
+ ('glass', 4),
+ ('take', 4),
+ ('consider', 4),
+ ('perfection', 3),
+ ('good', 3),
+ ('may', 3),
+ ('every', 3),
+ ('day', 3),
+ ('thing', 3),
+ ('perhaps', 3),
+ ('inhabitants', 3),
+ ('among', 3),
+ ('former', 3),
+ ('flame', 3),
+ ('somehow', 3),
+ ('possible', 3),
+ ('set', 3),
+ ('gave', 3),
+ ('silence', 3),
+ ('large', 3),
+ ('forever', 3),
+ ('constructor', 3),
+ ('tiny', 3),
+ ('saw', 3),
+ ('made', 3),
+ ('inside', 3),
+ ('whether', 3),
+ ('took', 3),
+ ('friend', 3),
+ ('whole', 3),
+ ('tell', 3),
+ ('say', 3),
+ ('illusion', 3),
+ ('since', 3),
+ ('reality', 3),
+ ('real', 3),
+ ('cried', 3),
+ ('groan', 3),
+ ('sufferer', 3),
+ ('prove', 3),
+ ('centuries', 2),
+ ('return', 2),
+ ('point', 2),
+ ('star', 2),
+ ('mighty', 2),
+ ('ran', 2),
+ ('explained', 2),
+ ('fame', 2),
+ ('however', 2),
+ ('failures', 2),
+ ('let', 2),
+ ('last', 2),
+ ('certain', 2),
+ ('home', 2),
+ ('days', 2),
+ ('perfectly', 2),
+ ('spheres', 2),
+ ('finally', 2),
+ ('peace', 2),
+ ('suddenly', 2),
+ ('view', 2),
+ ('running', 2),
+ ('back', 2),
+ ('jumping', 2),
+ ('waving', 2),
+ ('fit', 2),
+ ('throne', 2),
+ ('turn', 2),
+ ('something', 2),
+ ('events', 2),
+ ('brought', 2),
+ ('eyes', 2),
+ ('around', 2),
+ ('bring', 2),
+ ('untold', 2),
+ ('rivers', 2),
+ ('labor', 2),
+ ('capital', 2),
+ ('atmosphere', 2),
+ ('necessary', 2),
+ ('stars', 2),
+ ('size', 2),
+ ('presented', 2),
+ ('dominion', 2),
+ ('words', 2),
+ ('everything', 2),
+ ('hand', 2),
+ ('issued', 2),
+ ('proclamations', 2),
+ ('correctly', 2),
+ ('manipulating', 2),
+ ('state', 2),
+ ('emergency', 2),
+ ('levy', 2),
+ ('passed', 2),
+ ('minute', 2),
+ ('act', 2),
+ ('greatest', 2),
+ ('lifted', 2),
+ ('rose', 2),
+ ('felt', 2),
+ ('understood', 2),
+ ('order', 2),
+ ('sooner', 2),
+ ('cold', 2),
+ ('orb', 2),
+ ('night', 2),
+ ('ones', 2),
+ ('aspirations', 2),
+ ('fact', 2),
+ ('civilization', 2),
+ ('done', 2),
+ ('must', 2),
+ ('exclaimed', 2),
+ ('mean', 2),
+ ('hundred', 2),
+ ('million', 2),
+ ('times', 2),
+ ('larger', 2),
+ ('importance', 2),
+ ('die', 2),
+ ('processes', 2),
+ ('programmed', 2),
+ ('genuine', 2),
+ ('empty', 2),
+ ('purely', 2),
+ ('capering', 2),
+ ('precisely', 2),
+ ('arranged', 2),
+ ('word', 2),
+ ('variables', 2),
+ ('certainly', 2),
+ ('existence', 2),
+ ('imitation', 2),
+ ('upon', 2),
+ ('end', 2),
+ ('voice', 2),
+ ('imitator', 2),
+ ('pain', 2),
+ ('build', 2),
+ ('crude', 2),
+ ('idol', 2),
+ ('semblance', 2),
+ ('practice', 2),
+ ('beaten', 2),
+ ('mercy', 2),
+ ('number', 2),
+ ('tyrant', 2),
+ ('phonograph', 2),
+ ('fall', 2),
+ ('parameters', 2),
+ ('impossible', 2),
+ ('feel', 2),
+ ('anything', 2),
+ ('process', 2),
+ ('look', 2),
+ ('saying', 2),
+ ('wo', 2),
+ ('think', 2),
+ ('abyss', 2),
+ ('later', 2),
+ ('destroyed', 2),
+ ('similar', 2),
+ ('many', 2),
+ ('election', 2),
+ ('entire', 2),
+ ('beheld', 2),
+ ('side', 2),
+ ('mechanism', 2),
+ ('seventh', 1),
+ ('sally', 1),
+ ('led', 1),
+ ('lem', 1),
+ ('translated', 1),
+ ('michael', 1),
+ ('kandel', 1),
+ ('universe', 1),
+ ('infinite', 1),
+ ('bounded', 1),
+ ('therefore', 1),
+ ('beam', 1),
+ ('light', 1),
+ ('whatever', 1),
+ ('direction', 1),
+ ('travel', 1),
+ ('billions', 1),
+ ('powerful', 1),
+ ('departure', 1),
+ ('different', 1),
+ ('rumor', 1),
+ ('flies', 1),
+ ('makes', 1),
+ ('rounds', 1),
+ ('heard', 1),
+ ('distant', 1),
+ ('reports', 1),
+ ('wise', 1),
+ ('accomplished', 1),
+ ('equal', 1),
+ ('news', 1),
+ ('mysterious', 1),
+ ('rivals', 1),
+ ('circumnavigated', 1),
+ ('fault', 1),
+ ('says', 1),
+ ('product', 1),
+ ('doubt', 1),
+ ('recall', 1),
+ ('seven', 1),
+ ('sallies', 1),
+ ('undertaken', 1),
+ ('urgent', 1),
+ ('duties', 1),
+ ('kept', 1),
+ ('exceedingly', 1),
+ ('vain', 1),
+ ('receiving', 1),
+ ('marks', 1),
+ ('veneration', 1),
+ ('honor', 1),
+ ('paid', 1),
+ ('due', 1),
+ ('normal', 1),
+ ('heading', 1),
+ ('north', 1),
+ ('least', 1),
+ ('familiar', 1),
+ ('region', 1),
+ ('flown', 1),
+ ('void', 1),
+ ('quite', 1),
+ ('passing', 1),
+ ('clamor', 1),
+ ('war', 1),
+ ('obtained', 1),
+ ('desolation', 1),
+ ('stray', 1),
+ ('fragment', 1),
+ ('matter', 1),
+ ('surface', 1),
+ ('chunk', 1),
+ ('rock', 1),
+ ('someone', 1),
+ ('forth', 1),
+ ('arms', 1),
+ ('strangest', 1),
+ ('astonished', 1),
+ ('scene', 1),
+ ('total', 1),
+ ('loneliness', 1),
+ ('concerned', 1),
+ ('wild', 1),
+ ('gestures', 1),
+ ('despair', 1),
+ ('anger', 1),
+ ('quickly', 1),
+ ('landed', 1),
+ ('approached', 1),
+ ('personage', 1),
+ ('tremendous', 1),
+ ('hauteur', 1),
+ ('iridium', 1),
+ ('vanadium', 1),
+ ('deal', 1),
+ ('clanging', 1),
+ ('clanking', 1),
+ ('introduced', 1),
+ ('tartarian', 1),
+ ('ruler', 1),
+ ('pancreon', 1),
+ ('cyspenderora', 1),
+ ('kingdoms', 1),
+ ('regicidal', 1),
+ ('madness', 1),
+ ('driven', 1),
+ ('highness', 1),
+ ('exiled', 1),
+ ('barren', 1),
+ ('eternally', 1),
+ ('adrift', 1),
+ ('dark', 1),
+ ('swells', 1),
+ ('currents', 1),
+ ('gravitation', 1),
+ ('learning', 1),
+ ('identity', 1),
+ ('visitor', 1),
+ ('deposed', 1),
+ ('began', 1),
+ ('insist', 1),
+ ('professional', 1),
+ ('deeds', 1),
+ ('immediately', 1),
+ ('restore', 1),
+ ('position', 1),
+ ('thought', 1),
+ ('vengeance', 1),
+ ('iron', 1),
+ ('fingers', 1),
+ ('clutched', 1),
+ ('air', 1),
+ ('already', 1),
+ ('closing', 1),
+ ('throats', 1),
+ ('beloved', 1),
+ ('intention', 1),
+ ('complying', 1),
+ ('request', 1),
+ ('evil', 1),
+ ('yet', 1),
+ ('wished', 1),
+ ('comfort', 1),
+ ('console', 1),
+ ('humiliated', 1),
+ ('thinking', 1),
+ ('moment', 1),
+ ('conclusion', 1),
+ ('case', 1),
+ ('lost', 1),
+ ('satisfy', 1),
+ ('completely', 1),
+ ('putting', 1),
+ ('jeopardy', 1),
+ ('rolling', 1),
+ ('sleeves', 1),
+ ('summoning', 1),
+ ('mastery', 1),
+ ('built', 1),
+ ('entirely', 1),
+ ('new', 1),
+ ('plenty', 1),
+ ('towns', 1),
+ ('mountains', 1),
+ ('forests', 1),
+ ('brooks', 1),
+ ('sky', 1),
+ ('armies', 1),
+ ('citadels', 1),
+ ('castles', 1),
+ ('ladies', 1),
+ ('chambers', 1),
+ ('marketplaces', 1),
+ ('gaudy', 1),
+ ('gleaming', 1),
+ ('sun', 1),
+ ('nights', 1),
+ ('dancing', 1),
+ ('song', 1),
+ ('dawn', 1),
+ ('gay', 1),
+ ('clatter', 1),
+ ('swordplay', 1),
+ ('carefully', 1),
+ ('fabulous', 1),
+ ('marble', 1),
+ ('alabaster', 1),
+ ('assembled', 1),
+ ('council', 1),
+ ('hoary', 1),
+ ('sages', 1),
+ ('winter', 1),
+ ('palaces', 1),
+ ('summer', 1),
+ ('villas', 1),
+ ('plots', 1),
+ ('conspirators', 1),
+ ('false', 1),
+ ('witnesses', 1),
+ ('nurses', 1),
+ ('informers', 1),
+ ('teams', 1),
+ ('magnificent', 1),
+ ('steeds', 1),
+ ('plumes', 1),
+ ('crimson', 1),
+ ('wind', 1),
+ ('crisscrossed', 1),
+ ('silver', 1),
+ ('fanfares', 1),
+ ('gun', 1),
+ ('salutes', 1),
+ ('threw', 1),
+ ('handful', 1),
+ ('traitors', 1),
+ ('heroes', 1),
+ ('added', 1),
+ ('pinch', 1),
+ ('prophets', 1),
+ ('seers', 1),
+ ('messiah', 1),
+ ('poet', 1),
+ ('bent', 1),
+ ('works', 1),
+ ('motion', 1),
+ ('deftly', 1),
+ ('making', 1),
+ ('adjustments', 1),
+ ('tools', 1),
+ ('women', 1),
+ ('beauty', 1),
+ ('men', 1),
+ ('sullen', 1),
+ ('surliness', 1),
+ ('drunk', 1),
+ ('officials', 1),
+ ('arrogance', 1),
+ ('servility', 1),
+ ('astronomers', 1),
+ ('enthusiasm', 1),
+ ('children', 1),
+ ('capacity', 1),
+ ('noise', 1),
+ ('connected', 1),
+ ('mounted', 1),
+ ('ground', 1),
+ ('precision', 1),
+ ('carried', 1),
+ ('ease', 1),
+ ('showed', 1),
+ ('input', 1),
+ ('output', 1),
+ ('program', 1),
+ ('wars', 1),
+ ('quell', 1),
+ ('rebellions', 1),
+ ('exact', 1),
+ ('tribute', 1),
+ ('collect', 1),
+ ('taxes', 1),
+ ('instructed', 1),
+ ('critical', 1),
+ ('points', 1),
+ ('transition', 1),
+ ('states', 1),
+ ('microminiaturized', 1),
+ ('society', 1),
+ ('maxima', 1),
+ ('minima', 1),
+ ('palace', 1),
+ ('coups', 1),
+ ('revolutions', 1),
+ ('old', 1),
+ ('tyrannies', 1),
+ ('instantly', 1),
+ ('grasped', 1),
+ ('directions', 1),
+ ('hesitation', 1),
+ ('watched', 1),
+ ('trial', 1),
+ ('control', 1),
+ ('knobs', 1),
+ ('carved', 1),
+ ('imperial', 1),
+ ('eagles', 1),
+ ('regal', 1),
+ ('lions', 1),
+ ('declared', 1),
+ ('martial', 1),
+ ('law', 1),
+ ('curfew', 1),
+ ('special', 1),
+ ('year', 1),
+ ('amounted', 1),
+ ('hardly', 1),
+ ('magnanimity', 1),
+ ('flick', 1),
+ ('finger', 1),
+ ('controls', 1),
+ ('abolished', 1),
+ ('penalty', 1),
+ ('lightened', 1),
+ ('deigned', 1),
+ ('annul', 1),
+ ('whereupon', 1),
+ ('tumultuous', 1),
+ ('cry', 1),
+ ('gratitude', 1),
+ ('squeaking', 1),
+ ('mice', 1),
+ ('tails', 1),
+ ('curved', 1),
+ ('cover', 1),
+ ('dusty', 1),
+ ('highways', 1),
+ ('along', 1),
+ ('banks', 1),
+ ('lazy', 1),
+ ('reflected', 1),
+ ('fluffy', 1),
+ ('people', 1),
+ ('rejoicing', 1),
+ ('praising', 1),
+ ('unsurpassed', 1),
+ ('benevolence', 1),
+ ('sovereign', 1),
+ ('lord', 1),
+ ('insulted', 1),
+ ('gift', 1),
+ ('small', 1),
+ ('child', 1),
+ ('toy', 1),
+ ('thick', 1),
+ ('lid', 1),
+ ('seem', 1),
+ ('dully', 1),
+ ('mattered', 1),
+ ('government', 1),
+ ('measured', 1),
+ ('meters', 1),
+ ('kilograms', 1),
+ ('emotions', 1),
+ ('experienced', 1),
+ ('giants', 1),
+ ('dwarfs', 1),
+ ('thanked', 1),
+ ('somewhat', 1),
+ ('stiffly', 1),
+ ('knows', 1),
+ ('might', 1),
+ ('liked', 1),
+ ('thrown', 1),
+ ('chains', 1),
+ ('tortured', 1),
+ ('safe', 1),
+ ('sure', 1),
+ ('nipping', 1),
+ ('bud', 1),
+ ('gossip', 1),
+ ('common', 1),
+ ('vagabond', 1),
+ ('tinkerer', 1),
+ ('sensible', 1),
+ ('question', 1),
+ ('owing', 1),
+ ('fundamental', 1),
+ ('disproportion', 1),
+ ('fleas', 1),
+ ('host', 1),
+ ('captivity', 1),
+ ('army', 1),
+ ('seize', 1),
+ ('nod', 1),
+ ('stuck', 1),
+ ('scepter', 1),
+ ('arm', 1),
+ ('grunt', 1),
+ ('humble', 1),
+ ('hut', 1),
+ ('exile', 1),
+ ('blazing', 1),
+ ('alternated', 1),
+ ('murky', 1),
+ ('outside', 1),
+ ('according', 1),
+ ('rhythm', 1),
+ ('rotation', 1),
+ ('acknowledged', 1),
+ ('world', 1),
+ ('diligently', 1),
+ ('reigned', 1),
+ ('bidding', 1),
+ ('forbidding', 1),
+ ('beheading', 1),
+ ('rewarding', 1),
+ ('ways', 1),
+ ('incessantly', 1),
+ ('spurring', 1),
+ ('fealty', 1),
+ ('worship', 1),
+ ('returned', 1),
+ ('related', 1),
+ ('pride', 1),
+ ('employed', 1),
+ ('genius', 1),
+ ('indulge', 1),
+ ('autocratic', 1),
+ ('safeguard', 1),
+ ('democratic', 1),
+ ('surprisingly', 1),
+ ('praise', 1),
+ ('seemed', 1),
+ ('rebuke', 1),
+ ('expression', 1),
+ ('brutal', 1),
+ ('despot', 1),
+ ('born', 1),
+ ('slave', 1),
+ ('master', 1),
+ ('slavering', 1),
+ ('sadist', 1),
+ ('monger', 1),
+ ('moreover', 1),
+ ('cries', 1),
+ ('joy', 1),
+ ('repeal', 1),
+ ('fraction', 1),
+ ('cruel', 1),
+ ('decrees', 1),
+ ('joking', 1),
+ ('fits', 1),
+ ('three', 1),
+ ('feet', 1),
+ ('half', 1),
+ ('obviously', 1),
+ ('except', 1),
+ ('civilizations', 1),
+ ('dimensions', 1),
+ ('anyway', 1),
+ ('journey', 1),
+ ('corners', 1),
+ ('months', 1),
+ ('suffer', 1),
+ ('burden', 1),
+ ('place', 1),
+ ('parades', 1),
+ ('tortures', 1),
+ ('beheadings', 1),
+ ('merely', 1),
+ ('phenomena', 1),
+ ('produced', 1),
+ ('atoms', 1),
+ ('births', 1),
+ ('loves', 1),
+ ('acts', 1),
+ ('heroism', 1),
+ ('denunciations', 1),
+ ('minuscule', 1),
+ ('skill', 1),
+ ('nonlinear', 1),
+ ('craft', 1),
+ ('boasting', 1),
+ ('snapped', 1),
+ ('course', 1),
+ ('occur', 1),
+ ('infinitesimal', 1),
+ ('electrical', 1),
+ ('charge', 1),
+ ('phenomenological', 1),
+ ('dawns', 1),
+ ('sunsets', 1),
+ ('bloody', 1),
+ ('battles', 1),
+ ('generated', 1),
+ ('concatenation', 1),
+ ('examine', 1),
+ ('us', 1),
+ ('physically', 1),
+ ('mechanistically', 1),
+ ('statistically', 1),
+ ('meticulously', 1),
+ ('miniscule', 1),
+ ('electron', 1),
+ ('positive', 1),
+ ('negative', 1),
+ ('charges', 1),
+ ('result', 1),
+ ('subatomic', 1),
+ ('collisions', 1),
+ ('interplay', 1),
+ ('particles', 1),
+ ('perceive', 1),
+ ('molecular', 1),
+ ('cartwheels', 1),
+ ('fear', 1),
+ ('longing', 1),
+ ('meditation', 1),
+ ('daydream', 1),
+ ('transpires', 1),
+ ('within', 1),
+ ('brain', 1),
+ ('binary', 1),
+ ('algebra', 1),
+ ('connecting', 1),
+ ('disconnecting', 1),
+ ('circuits', 1),
+ ('continual', 1),
+ ('meandering', 1),
+ ('equate', 1),
+ ('locked', 1),
+ ('going', 1),
+ ('far', 1),
+ ('purpose', 1),
+ ('simply', 1),
+ ('fashion', 1),
+ ('simulator', 1),
+ ('statehood', 1),
+ ('cybernetically', 1),
+ ('curse', 1),
+ ('draws', 1),
+ ('endeavor', 1),
+ ('unforeseeable', 1),
+ ('consequences', 1),
+ ('stentorian', 1),
+ ('imperfect', 1),
+ ('wishing', 1),
+ ('inflict', 1),
+ ('wood', 1),
+ ('wax', 1),
+ ('give', 1),
+ ('makeshift', 1),
+ ('sentient', 1),
+ ('torture', 1),
+ ('paltry', 1),
+ ('mockery', 1),
+ ('indeed', 1),
+ ('succession', 1),
+ ('improvements', 1),
+ ('next', 1),
+ ('sculptor', 1),
+ ('builds', 1),
+ ('recording', 1),
+ ('belly', 1),
+ ('beneath', 1),
+ ('blows', 1),
+ ('begs', 1),
+ ('longer', 1),
+ ('homeostat', 1),
+ ('sheds', 1),
+ ('tears', 1),
+ ('bleeds', 1),
+ ('fears', 1),
+ ('longs', 1),
+ ('becomes', 1),
+ ('truth', 1),
+ ('pretense', 1),
+ ('creatures', 1),
+ ('capable', 1),
+ ('abandoned', 1),
+ ('wicked', 1),
+ ('committed', 1),
+ ('terrible', 1),
+ ('crime', 1),
+ ('sheer', 1),
+ ('sophistry', 1),
+ ('shouted', 1),
+ ('louder', 1),
+ ('force', 1),
+ ('argument', 1),
+ ('meander', 1),
+ ('brains', 1),
+ ('records', 1),
+ ('proves', 1),
+ ('gives', 1),
+ ('grounds', 1),
+ ('hypostatical', 1),
+ ('analogies', 1),
+ ('monster', 1),
+ ('decapitated', 1),
+ ('sob', 1),
+ ('fight', 1),
+ ('love', 1),
+ ('heads', 1),
+ ('head', 1),
+ ('replied', 1),
+ ('come', 1),
+ ('pretend', 1),
+ ('stupid', 1),
+ ('record', 1),
+ ('run', 1),
+ ('errands', 1),
+ ('beg', 1),
+ ('knees', 1),
+ ('knowing', 1),
+ ('hopping', 1),
+ ('wheels', 1),
+ ('grinding', 1),
+ ('mimicry', 1),
+ ('honestly', 1),
+ ('experience', 1),
+ ('pretty', 1),
+ ('distinction', 1),
+ ('hands', 1),
+ ('touch', 1),
+ ('weigh', 1),
+ ('bite', 1),
+ ('coin', 1),
+ ('behaves', 1),
+ ('exist', 1),
+ ('conscious', 1),
+ ('enclosure', 1),
+ ('abysses', 1),
+ ('oblivion', 1),
+ ('birth', 1),
+ ('follows', 1),
+ ('leave', 1),
+ ('imitated', 1),
+ ('create', 1),
+ ('answered', 1),
+ ('quietly', 1),
+ ('instruments', 1),
+ ('still', 1),
+ ('anticipate', 1),
+ ('possibility', 1),
+ ('proof', 1),
+ ('otherwise', 1),
+ ('gotten', 1),
+ ('impression', 1),
+ ('puppets', 1),
+ ('marionettes', 1),
+ ('try', 1),
+ ('littlest', 1),
+ ('complete', 1),
+ ('dignity', 1),
+ ('governing', 1),
+ ('turned', 1),
+ ('mechanical', 1),
+ ('game', 1),
+ ('intentions', 1),
+ ('noblest', 1),
+ ('sought', 1),
+ ('construct', 1),
+ ('lifelike', 1),
+ ('absolutely', 1),
+ ('ever', 1),
+ ('difference', 1),
+ ('afraid', 1),
+ ('successful', 1),
+ ('hours', 1),
+ ('imprisoned', 1),
+ ('gone', 1),
+ ('beings', 1),
+ ('lives', 1),
+ ('wasted', 1),
+ ('gratify', 1),
+ ('feed', 1),
+ ('vanity', 1),
+ ('rushed', 1),
+ ('coming', 1),
+ ('blasted', 1),
+ ('pointed', 1),
+ ('bow', 1),
+ ('clusters', 1),
+ ('eternal', 1),
+ ('opened', 1),
+ ('throttle', 1),
+ ('hopeless', 1),
+ ('always', 1),
+ ('intend', 1),
+ ('get', 1),
+ ('away', 1),
+ ('destroy', 1),
+ ('shout', 1),
+ ('choked', 1),
+ ('syllable', 1),
+ ('realized', 1),
+ ('mumbled', 1),
+ ('hold', 1),
+ ('choose', 1),
+ ('rulers', 1),
+ ('feudal', 1),
+ ('lords', 1),
+ ('shiftless', 1),
+ ('vassals', 1),
+ ('undo', 1),
+ ('structure', 1),
+ ('assemble', 1),
+ ('scratch', 1),
+ ('changing', 1),
+ ('structures', 1),
+ ('tampering', 1),
+ ('minds', 1),
+ ('begin', 1),
+ ('answer', 1),
+ ('flew', 1),
+ ('gloomy', 1),
+ ('till', 1),
+ ('circled', 1),
+ ('preparing', 1),
+ ('land', 1),
+ ('amazing', 1),
+ ('sight', 1),
+ ('covered', 1),
+ ('countless', 1),
+ ('signs', 1),
+ ('intelligent', 1),
+ ('life', 1),
+ ('bridges', 1),
+ ('lines', 1),
+ ('spanned', 1),
+ ('rill', 1),
+ ('rivulet', 1),
+ ('puddles', 1),
+ ('reflecting', 1),
+ ('boats', 1),
+ ('floating', 1),
+ ('chips', 1),
+ ('sphere', 1),
+ ('dotted', 1),
+ ('glimmering', 1),
+ ('cities', 1),
+ ('make', 1),
+ ('flourishing', 1),
+ ('metropolises', 1),
+ ('much', 1),
+ ('observe', 1),
+ ('strongest', 1),
+ ('lens', 1),
+ ('trace', 1),
+ ('earth', 1),
+ ('swallowed', 1),
+ ('awed', 1),
+ ('whisper', 1),
+ ('managed', 1),
+ ('break', 1),
+ ('walls', 1),
+ ('occupy', 1),
+ ('pointing', 1),
+ ('cloud', 1),
+ ('thimble', 1),
+ ('shaped', 1),
+ ('mushroom', 1),
+ ('slowly', 1),
+ ('discovered', 1),
+ ('atomic', 1),
+ ('energy', 1),
+ ('bit', 1),
+ ('remains', 1),
+ ('sort', 1),
+ ('temple', 1),
+ ('simulation', 1),
+ ('feedback', 1),
+ ('multistats', 1),
+ ('muttered', 1),
+ ('dumbfounded', 1),
+ ('yes', 1),
+ ('unforgivable', 1),
+ ('mistake', 1),
+ ('overperfecting', 1),
+ ('replica', 1),
+ ('wanting', 1),
+ ('mere', 1),
+ ('clocklike', 1),
+ ('inadvertently', 1),
+ ('punctilious', 1),
+ ('created', 1),
+ ('logical', 1),
+ ('inevitable', 1),
+ ('became', 1),
+ ('antithesis', 1),
+ ('please', 1),
+ ('looked', 1),
+ ('bumped', 1),
+ ('rather', 1),
+ ('grazed', 1),
+ ('slightly', 1),
+ ('object', 1),
+ ('illuminated', 1),
+ ('thin', 1),
+ ('ribbon', 1),
+ ('tail', 1),
+ ('probably', 1),
+ ('artificial', 1),
+ ('satellite', 1),
+ ('remarkably', 1),
+ ...]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="wordcloud" class="level1">
+<h1>Wordcloud</h1>
+<div id="9d87329b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>wc <span class="op">=</span> WordCloud(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    background_color<span class="op">=</span><span class="st">'white'</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>).generate(story)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.imshow(wc,interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="text_visualization_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bar-chart-the-frecuencia" class="level1">
+<h1>Bar chart the frecuencia</h1>
+<div id="eeb9ea9a" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> []</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>types <span class="op">=</span> []</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> pos: </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    word <span class="op">=</span> p[<span class="dv">0</span>].lower()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    tag <span class="op">=</span> p[<span class="dv">1</span>]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> word.isalpha() <span class="kw">and</span> word <span class="kw">not</span> <span class="kw">in</span> stopwords:</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        words.append(word)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tag.startswith(<span class="st">"NN"</span>):</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>            types.append(<span class="st">'Noun'</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> tag.startswith(<span class="st">'V'</span>):</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            types.append(<span class="st">"Verb"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> tag.startswith(<span class="st">'J'</span>):</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>            types.append(<span class="st">"Adjective"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> tag.startswith(<span class="st">"R"</span>):</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>            types.append(<span class="st">'Adverb'</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>            types.append(<span class="st">'Other'</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(words), <span class="bu">len</span>(types))</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'word'</span>:words,<span class="st">'type'</span>:types}</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">#df</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> alt.Chart(df)</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>selection <span class="op">=</span> alt.selection_point(fields<span class="op">=</span>[<span class="st">'type'</span>])</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="co">#chart1</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>chart1 <span class="op">=</span> base.mark_bar().encode(</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    alt.X(<span class="st">'type'</span>, sort<span class="op">=</span><span class="st">'-y'</span>),</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>    alt.Y(<span class="st">'count()'</span>),</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span>alt.condition(</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>        selection,</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>        alt.value(<span class="dv">1</span>),</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>        alt.value(<span class="fl">0.2</span>)</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>).add_params(selection)</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a><span class="co">#chart2</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>chart2 <span class="op">=</span> base.mark_bar().encode(</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>    alt.X(<span class="st">'word'</span>, sort<span class="op">=</span><span class="st">'-y'</span>),</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>    alt.Y(<span class="st">'count()'</span>)</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>).transform_filter(selection)</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>chart1 <span class="op">|</span> chart2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1504 1504</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<style>
+  #altair-viz-a9a7a98338cb41149b5eb35066ac8402.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a9a7a98338cb41149b5eb35066ac8402.vega-embed details,
+  #altair-viz-a9a7a98338cb41149b5eb35066ac8402.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a9a7a98338cb41149b5eb35066ac8402"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a9a7a98338cb41149b5eb35066ac8402") {
+      outputDiv = document.getElementById("altair-viz-a9a7a98338cb41149b5eb35066ac8402");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"mark": {"type": "bar"}, "encoding": {"opacity": {"condition": {"param": "param_d9c4d1b51485fc7b", "value": 1}, "value": 0.2}, "x": {"field": "type", "sort": "-y", "type": "nominal"}, "y": {"aggregate": "count", "type": "quantitative"}}, "name": "view_6695d8c5549925c6_0"}, {"mark": {"type": "bar"}, "encoding": {"x": {"field": "word", "sort": "-y", "type": "nominal"}, "y": {"aggregate": "count", "type": "quantitative"}}, "transform": [{"filter": {"param": "param_d9c4d1b51485fc7b"}}]}], "data": {"name": "data-006885c643191d7559065471646daca9"}, "params": [{"name": "param_d9c4d1b51485fc7b", "select": {"type": "point", "fields": ["type"]}, "views": ["view_6695d8c5549925c6_0"]}], "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-006885c643191d7559065471646daca9": [{"word": "seventh", "type": "Adjective"}, {"word": "sally", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "perfection", "type": "Noun"}, {"word": "led", "type": "Verb"}, {"word": "good", "type": "Adjective"}, {"word": "lem", "type": "Noun"}, {"word": "translated", "type": "Verb"}, {"word": "michael", "type": "Noun"}, {"word": "kandel", "type": "Noun"}, {"word": "universe", "type": "Noun"}, {"word": "infinite", "type": "Adjective"}, {"word": "bounded", "type": "Verb"}, {"word": "therefore", "type": "Adverb"}, {"word": "beam", "type": "Noun"}, {"word": "light", "type": "Noun"}, {"word": "whatever", "type": "Other"}, {"word": "direction", "type": "Noun"}, {"word": "may", "type": "Other"}, {"word": "travel", "type": "Verb"}, {"word": "billions", "type": "Noun"}, {"word": "centuries", "type": "Noun"}, {"word": "return", "type": "Verb"}, {"word": "powerful", "type": "Adjective"}, {"word": "enough", "type": "Adverb"}, {"word": "point", "type": "Noun"}, {"word": "departure", "type": "Noun"}, {"word": "different", "type": "Adjective"}, {"word": "rumor", "type": "Noun"}, {"word": "flies", "type": "Noun"}, {"word": "star", "type": "Noun"}, {"word": "star", "type": "Verb"}, {"word": "makes", "type": "Verb"}, {"word": "rounds", "type": "Noun"}, {"word": "every", "type": "Other"}, {"word": "planet", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "day", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "heard", "type": "Verb"}, {"word": "distant", "type": "Adjective"}, {"word": "reports", "type": "Noun"}, {"word": "two", "type": "Other"}, {"word": "mighty", "type": "Adjective"}, {"word": "wise", "type": "Adjective"}, {"word": "accomplished", "type": "Verb"}, {"word": "equal", "type": "Adjective"}, {"word": "news", "type": "Noun"}, {"word": "ran", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "explained", "type": "Verb"}, {"word": "mysterious", "type": "Adjective"}, {"word": "rivals", "type": "Noun"}, {"word": "fame", "type": "Noun"}, {"word": "circumnavigated", "type": "Verb"}, {"word": "space", "type": "Noun"}, {"word": "fame", "type": "Noun"}, {"word": "however", "type": "Adverb"}, {"word": "fault", "type": "Noun"}, {"word": "says", "type": "Verb"}, {"word": "nothing", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "failures", "type": "Noun"}, {"word": "even", "type": "Adverb"}, {"word": "failures", "type": "Noun"}, {"word": "product", "type": "Noun"}, {"word": "great", "type": "Adjective"}, {"word": "perfection", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "doubt", "type": "Verb"}, {"word": "let", "type": "Verb"}, {"word": "recall", "type": "Verb"}, {"word": "last", "type": "Adjective"}, {"word": "seven", "type": "Other"}, {"word": "sallies", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "undertaken", "type": "Verb"}, {"word": "without", "type": "Other"}, {"word": "klapaucius", "type": "Noun"}, {"word": "certain", "type": "Adjective"}, {"word": "urgent", "type": "Adjective"}, {"word": "duties", "type": "Noun"}, {"word": "kept", "type": "Verb"}, {"word": "home", "type": "Noun"}, {"word": "time", "type": "Noun"}, {"word": "days", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "exceedingly", "type": "Adverb"}, {"word": "vain", "type": "Adjective"}, {"word": "receiving", "type": "Verb"}, {"word": "marks", "type": "Noun"}, {"word": "veneration", "type": "Noun"}, {"word": "honor", "type": "Noun"}, {"word": "paid", "type": "Verb"}, {"word": "due", "type": "Adjective"}, {"word": "perfectly", "type": "Adverb"}, {"word": "normal", "type": "Adjective"}, {"word": "thing", "type": "Noun"}, {"word": "heading", "type": "Verb"}, {"word": "north", "type": "Noun"}, {"word": "ship", "type": "Noun"}, {"word": "least", "type": "Adjective"}, {"word": "familiar", "type": "Adjective"}, {"word": "region", "type": "Noun"}, {"word": "flown", "type": "Verb"}, {"word": "void", "type": "Noun"}, {"word": "quite", "type": "Adverb"}, {"word": "time", "type": "Noun"}, {"word": "passing", "type": "Verb"}, {"word": "spheres", "type": "Noun"}, {"word": "full", "type": "Adjective"}, {"word": "clamor", "type": "Noun"}, {"word": "war", "type": "Noun"}, {"word": "well", "type": "Adverb"}, {"word": "spheres", "type": "Noun"}, {"word": "finally", "type": "Adverb"}, {"word": "obtained", "type": "Verb"}, {"word": "perfect", "type": "Adjective"}, {"word": "peace", "type": "Noun"}, {"word": "desolation", "type": "Noun"}, {"word": "suddenly", "type": "Adverb"}, {"word": "little", "type": "Adjective"}, {"word": "planet", "type": "Noun"}, {"word": "came", "type": "Verb"}, {"word": "view", "type": "Noun"}, {"word": "really", "type": "Adverb"}, {"word": "stray", "type": "Adjective"}, {"word": "fragment", "type": "Noun"}, {"word": "matter", "type": "Noun"}, {"word": "planet", "type": "Noun"}, {"word": "surface", "type": "Noun"}, {"word": "chunk", "type": "Noun"}, {"word": "rock", "type": "Noun"}, {"word": "someone", "type": "Noun"}, {"word": "running", "type": "Verb"}, {"word": "back", "type": "Adverb"}, {"word": "forth", "type": "Noun"}, {"word": "jumping", "type": "Noun"}, {"word": "waving", "type": "Verb"}, {"word": "arms", "type": "Noun"}, {"word": "strangest", "type": "Adjective"}, {"word": "way", "type": "Noun"}, {"word": "astonished", "type": "Verb"}, {"word": "scene", "type": "Noun"}, {"word": "total", "type": "Adjective"}, {"word": "loneliness", "type": "Noun"}, {"word": "concerned", "type": "Verb"}, {"word": "wild", "type": "Adjective"}, {"word": "gestures", "type": "Noun"}, {"word": "despair", "type": "Noun"}, {"word": "perhaps", "type": "Adverb"}, {"word": "anger", "type": "Noun"}, {"word": "well", "type": "Adverb"}, {"word": "trurl", "type": "Noun"}, {"word": "quickly", "type": "Adverb"}, {"word": "landed", "type": "Verb"}, {"word": "approached", "type": "Verb"}, {"word": "personage", "type": "Noun"}, {"word": "tremendous", "type": "Adjective"}, {"word": "hauteur", "type": "Noun"}, {"word": "iridium", "type": "Noun"}, {"word": "vanadium", "type": "Noun"}, {"word": "great", "type": "Adjective"}, {"word": "deal", "type": "Noun"}, {"word": "clanging", "type": "Verb"}, {"word": "clanking", "type": "Verb"}, {"word": "introduced", "type": "Verb"}, {"word": "excelsius", "type": "Noun"}, {"word": "tartarian", "type": "Noun"}, {"word": "ruler", "type": "Noun"}, {"word": "pancreon", "type": "Noun"}, {"word": "cyspenderora", "type": "Noun"}, {"word": "inhabitants", "type": "Noun"}, {"word": "kingdoms", "type": "Noun"}, {"word": "fit", "type": "Noun"}, {"word": "regicidal", "type": "Adjective"}, {"word": "madness", "type": "Noun"}, {"word": "driven", "type": "Verb"}, {"word": "highness", "type": "Noun"}, {"word": "throne", "type": "Noun"}, {"word": "exiled", "type": "Verb"}, {"word": "barren", "type": "Noun"}, {"word": "asteroid", "type": "Noun"}, {"word": "eternally", "type": "Adverb"}, {"word": "adrift", "type": "Verb"}, {"word": "among", "type": "Other"}, {"word": "dark", "type": "Noun"}, {"word": "swells", "type": "Noun"}, {"word": "currents", "type": "Noun"}, {"word": "gravitation", "type": "Noun"}, {"word": "learning", "type": "Verb"}, {"word": "turn", "type": "Noun"}, {"word": "identity", "type": "Noun"}, {"word": "visitor", "type": "Noun"}, {"word": "deposed", "type": "Verb"}, {"word": "monarch", "type": "Noun"}, {"word": "began", "type": "Verb"}, {"word": "insist", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "something", "type": "Noun"}, {"word": "professional", "type": "Adjective"}, {"word": "came", "type": "Verb"}, {"word": "good", "type": "Adjective"}, {"word": "deeds", "type": "Noun"}, {"word": "immediately", "type": "Adverb"}, {"word": "restore", "type": "Verb"}, {"word": "former", "type": "Adjective"}, {"word": "position", "type": "Noun"}, {"word": "thought", "type": "Noun"}, {"word": "turn", "type": "Noun"}, {"word": "events", "type": "Noun"}, {"word": "brought", "type": "Verb"}, {"word": "flame", "type": "Noun"}, {"word": "vengeance", "type": "Noun"}, {"word": "monarch", "type": "Noun"}, {"word": "eyes", "type": "Noun"}, {"word": "iron", "type": "Noun"}, {"word": "fingers", "type": "Noun"}, {"word": "clutched", "type": "Verb"}, {"word": "air", "type": "Noun"}, {"word": "already", "type": "Adverb"}, {"word": "closing", "type": "Verb"}, {"word": "around", "type": "Other"}, {"word": "throats", "type": "Noun"}, {"word": "beloved", "type": "Adjective"}, {"word": "subjects", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "intention", "type": "Noun"}, {"word": "complying", "type": "Verb"}, {"word": "request", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "bring", "type": "Verb"}, {"word": "untold", "type": "Adjective"}, {"word": "evil", "type": "Noun"}, {"word": "suffering", "type": "Noun"}, {"word": "yet", "type": "Adverb"}, {"word": "time", "type": "Noun"}, {"word": "wished", "type": "Verb"}, {"word": "somehow", "type": "Adverb"}, {"word": "comfort", "type": "Noun"}, {"word": "console", "type": "Verb"}, {"word": "humiliated", "type": "Adjective"}, {"word": "king", "type": "Noun"}, {"word": "thinking", "type": "Verb"}, {"word": "moment", "type": "Noun"}, {"word": "two", "type": "Other"}, {"word": "came", "type": "Verb"}, {"word": "conclusion", "type": "Noun"}, {"word": "even", "type": "Adverb"}, {"word": "case", "type": "Noun"}, {"word": "lost", "type": "Verb"}, {"word": "would", "type": "Other"}, {"word": "possible", "type": "Adjective"}, {"word": "satisfy", "type": "Verb"}, {"word": "king", "type": "Noun"}, {"word": "completely", "type": "Adverb"}, {"word": "without", "type": "Other"}, {"word": "putting", "type": "Verb"}, {"word": "former", "type": "Adjective"}, {"word": "subjects", "type": "Noun"}, {"word": "jeopardy", "type": "Noun"}, {"word": "rolling", "type": "Verb"}, {"word": "sleeves", "type": "Noun"}, {"word": "summoning", "type": "Verb"}, {"word": "mastery", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "built", "type": "Verb"}, {"word": "king", "type": "Verb"}, {"word": "entirely", "type": "Adverb"}, {"word": "new", "type": "Adjective"}, {"word": "kingdom", "type": "Noun"}, {"word": "plenty", "type": "Noun"}, {"word": "towns", "type": "Noun"}, {"word": "rivers", "type": "Noun"}, {"word": "mountains", "type": "Noun"}, {"word": "forests", "type": "Noun"}, {"word": "brooks", "type": "Noun"}, {"word": "sky", "type": "Noun"}, {"word": "clouds", "type": "Noun"}, {"word": "armies", "type": "Noun"}, {"word": "full", "type": "Adjective"}, {"word": "citadels", "type": "Noun"}, {"word": "castles", "type": "Noun"}, {"word": "ladies", "type": "Noun"}, {"word": "chambers", "type": "Noun"}, {"word": "marketplaces", "type": "Noun"}, {"word": "gaudy", "type": "Noun"}, {"word": "gleaming", "type": "Noun"}, {"word": "sun", "type": "Noun"}, {"word": "days", "type": "Noun"}, {"word": "labor", "type": "Noun"}, {"word": "nights", "type": "Noun"}, {"word": "full", "type": "Adjective"}, {"word": "dancing", "type": "Verb"}, {"word": "song", "type": "Adverb"}, {"word": "dawn", "type": "Noun"}, {"word": "gay", "type": "Adjective"}, {"word": "clatter", "type": "Noun"}, {"word": "swordplay", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "also", "type": "Adverb"}, {"word": "carefully", "type": "Adverb"}, {"word": "set", "type": "Verb"}, {"word": "kingdom", "type": "Verb"}, {"word": "fabulous", "type": "Adjective"}, {"word": "capital", "type": "Noun"}, {"word": "marble", "type": "Noun"}, {"word": "alabaster", "type": "Noun"}, {"word": "assembled", "type": "Verb"}, {"word": "council", "type": "Noun"}, {"word": "hoary", "type": "Adjective"}, {"word": "sages", "type": "Noun"}, {"word": "winter", "type": "Noun"}, {"word": "palaces", "type": "Noun"}, {"word": "summer", "type": "Noun"}, {"word": "villas", "type": "Noun"}, {"word": "plots", "type": "Noun"}, {"word": "conspirators", "type": "Noun"}, {"word": "false", "type": "Adjective"}, {"word": "witnesses", "type": "Noun"}, {"word": "nurses", "type": "Noun"}, {"word": "informers", "type": "Noun"}, {"word": "teams", "type": "Noun"}, {"word": "magnificent", "type": "Adjective"}, {"word": "steeds", "type": "Noun"}, {"word": "plumes", "type": "Noun"}, {"word": "waving", "type": "Verb"}, {"word": "crimson", "type": "Noun"}, {"word": "wind", "type": "Noun"}, {"word": "crisscrossed", "type": "Verb"}, {"word": "atmosphere", "type": "Adverb"}, {"word": "silver", "type": "Noun"}, {"word": "fanfares", "type": "Noun"}, {"word": "gun", "type": "Noun"}, {"word": "salutes", "type": "Noun"}, {"word": "also", "type": "Adverb"}, {"word": "threw", "type": "Verb"}, {"word": "necessary", "type": "Adjective"}, {"word": "handful", "type": "Noun"}, {"word": "traitors", "type": "Noun"}, {"word": "another", "type": "Other"}, {"word": "heroes", "type": "Noun"}, {"word": "added", "type": "Verb"}, {"word": "pinch", "type": "Noun"}, {"word": "prophets", "type": "Noun"}, {"word": "seers", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "messiah", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "great", "type": "Adjective"}, {"word": "poet", "type": "Noun"}, {"word": "bent", "type": "Verb"}, {"word": "set", "type": "Verb"}, {"word": "works", "type": "Noun"}, {"word": "motion", "type": "Noun"}, {"word": "deftly", "type": "Adverb"}, {"word": "making", "type": "Verb"}, {"word": "adjustments", "type": "Noun"}, {"word": "microscopic", "type": "Noun"}, {"word": "tools", "type": "Noun"}, {"word": "ran", "type": "Verb"}, {"word": "gave", "type": "Verb"}, {"word": "women", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "beauty", "type": "Noun"}, {"word": "men", "type": "Noun"}, {"word": "sullen", "type": "Verb"}, {"word": "silence", "type": "Noun"}, {"word": "surliness", "type": "Noun"}, {"word": "drunk", "type": "Noun"}, {"word": "officials", "type": "Noun"}, {"word": "arrogance", "type": "Noun"}, {"word": "servility", "type": "Noun"}, {"word": "astronomers", "type": "Noun"}, {"word": "enthusiasm", "type": "Noun"}, {"word": "stars", "type": "Noun"}, {"word": "children", "type": "Noun"}, {"word": "great", "type": "Adjective"}, {"word": "capacity", "type": "Noun"}, {"word": "noise", "type": "Noun"}, {"word": "connected", "type": "Verb"}, {"word": "mounted", "type": "Verb"}, {"word": "ground", "type": "Noun"}, {"word": "precision", "type": "Noun"}, {"word": "fit", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "large", "type": "Adjective"}, {"word": "box", "type": "Noun"}, {"word": "size", "type": "Noun"}, {"word": "could", "type": "Other"}, {"word": "carried", "type": "Verb"}, {"word": "ease", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "presented", "type": "Verb"}, {"word": "excelsius", "type": "Noun"}, {"word": "rule", "type": "Verb"}, {"word": "dominion", "type": "Noun"}, {"word": "forever", "type": "Adverb"}, {"word": "first", "type": "Adverb"}, {"word": "showed", "type": "Verb"}, {"word": "input", "type": "Noun"}, {"word": "output", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "program", "type": "Noun"}, {"word": "wars", "type": "Noun"}, {"word": "quell", "type": "Noun"}, {"word": "rebellions", "type": "Noun"}, {"word": "exact", "type": "Adjective"}, {"word": "tribute", "type": "Noun"}, {"word": "collect", "type": "Adjective"}, {"word": "taxes", "type": "Noun"}, {"word": "also", "type": "Adverb"}, {"word": "instructed", "type": "Verb"}, {"word": "critical", "type": "Adjective"}, {"word": "points", "type": "Noun"}, {"word": "transition", "type": "Noun"}, {"word": "states", "type": "Noun"}, {"word": "microminiaturized", "type": "Verb"}, {"word": "society", "type": "Noun"}, {"word": "words", "type": "Noun"}, {"word": "maxima", "type": "Noun"}, {"word": "minima", "type": "Noun"}, {"word": "palace", "type": "Noun"}, {"word": "coups", "type": "Noun"}, {"word": "revolutions", "type": "Noun"}, {"word": "explained", "type": "Verb"}, {"word": "everything", "type": "Noun"}, {"word": "well", "type": "Adverb"}, {"word": "king", "type": "Noun"}, {"word": "old", "type": "Adjective"}, {"word": "hand", "type": "Noun"}, {"word": "running", "type": "Noun"}, {"word": "tyrannies", "type": "Noun"}, {"word": "instantly", "type": "Adverb"}, {"word": "grasped", "type": "Verb"}, {"word": "directions", "type": "Noun"}, {"word": "without", "type": "Other"}, {"word": "hesitation", "type": "Noun"}, {"word": "constructor", "type": "Noun"}, {"word": "watched", "type": "Verb"}, {"word": "issued", "type": "Verb"}, {"word": "trial", "type": "Noun"}, {"word": "proclamations", "type": "Noun"}, {"word": "correctly", "type": "Adverb"}, {"word": "manipulating", "type": "Verb"}, {"word": "control", "type": "Noun"}, {"word": "knobs", "type": "Noun"}, {"word": "carved", "type": "Verb"}, {"word": "imperial", "type": "Adjective"}, {"word": "eagles", "type": "Noun"}, {"word": "regal", "type": "Adjective"}, {"word": "lions", "type": "Noun"}, {"word": "proclamations", "type": "Noun"}, {"word": "declared", "type": "Verb"}, {"word": "state", "type": "Noun"}, {"word": "emergency", "type": "Noun"}, {"word": "martial", "type": "Adjective"}, {"word": "law", "type": "Noun"}, {"word": "curfew", "type": "Noun"}, {"word": "special", "type": "Adjective"}, {"word": "levy", "type": "Noun"}, {"word": "year", "type": "Noun"}, {"word": "passed", "type": "Verb"}, {"word": "kingdom", "type": "Noun"}, {"word": "amounted", "type": "Verb"}, {"word": "hardly", "type": "Adverb"}, {"word": "minute", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "act", "type": "Noun"}, {"word": "greatest", "type": "Adjective"}, {"word": "magnanimity", "type": "Noun"}, {"word": "flick", "type": "Noun"}, {"word": "finger", "type": "Noun"}, {"word": "controls", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "abolished", "type": "Verb"}, {"word": "one", "type": "Other"}, {"word": "death", "type": "Noun"}, {"word": "penalty", "type": "Noun"}, {"word": "lightened", "type": "Verb"}, {"word": "levy", "type": "Noun"}, {"word": "deigned", "type": "Verb"}, {"word": "annul", "type": "Verb"}, {"word": "state", "type": "Noun"}, {"word": "emergency", "type": "Noun"}, {"word": "whereupon", "type": "Other"}, {"word": "tumultuous", "type": "Adjective"}, {"word": "cry", "type": "Noun"}, {"word": "gratitude", "type": "Noun"}, {"word": "like", "type": "Other"}, {"word": "squeaking", "type": "Noun"}, {"word": "tiny", "type": "Adjective"}, {"word": "mice", "type": "Noun"}, {"word": "lifted", "type": "Verb"}, {"word": "tails", "type": "Noun"}, {"word": "rose", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "curved", "type": "Adjective"}, {"word": "glass", "type": "Noun"}, {"word": "cover", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "could", "type": "Other"}, {"word": "see", "type": "Verb"}, {"word": "dusty", "type": "Adjective"}, {"word": "highways", "type": "Noun"}, {"word": "along", "type": "Other"}, {"word": "banks", "type": "Noun"}, {"word": "lazy", "type": "Adjective"}, {"word": "rivers", "type": "Noun"}, {"word": "reflected", "type": "Verb"}, {"word": "fluffy", "type": "Noun"}, {"word": "clouds", "type": "Noun"}, {"word": "people", "type": "Noun"}, {"word": "rejoicing", "type": "Verb"}, {"word": "praising", "type": "Verb"}, {"word": "great", "type": "Adjective"}, {"word": "unsurpassed", "type": "Adjective"}, {"word": "benevolence", "type": "Noun"}, {"word": "sovereign", "type": "Noun"}, {"word": "lord", "type": "Noun"}, {"word": "though", "type": "Other"}, {"word": "first", "type": "Adjective"}, {"word": "felt", "type": "Verb"}, {"word": "insulted", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "gift", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "small", "type": "Adjective"}, {"word": "like", "type": "Other"}, {"word": "child", "type": "Noun"}, {"word": "toy", "type": "Noun"}, {"word": "monarch", "type": "Noun"}, {"word": "saw", "type": "Verb"}, {"word": "thick", "type": "Adjective"}, {"word": "glass", "type": "Noun"}, {"word": "lid", "type": "Noun"}, {"word": "made", "type": "Verb"}, {"word": "everything", "type": "Noun"}, {"word": "inside", "type": "Other"}, {"word": "seem", "type": "Adjective"}, {"word": "large", "type": "Adjective"}, {"word": "perhaps", "type": "Adverb"}, {"word": "dully", "type": "Adverb"}, {"word": "understood", "type": "Verb"}, {"word": "size", "type": "Noun"}, {"word": "mattered", "type": "Verb"}, {"word": "government", "type": "Noun"}, {"word": "measured", "type": "Verb"}, {"word": "meters", "type": "Noun"}, {"word": "kilograms", "type": "Noun"}, {"word": "emotions", "type": "Noun"}, {"word": "somehow", "type": "Adverb"}, {"word": "whether", "type": "Other"}, {"word": "experienced", "type": "Verb"}, {"word": "giants", "type": "Noun"}, {"word": "dwarfs", "type": "Verb"}, {"word": "thanked", "type": "Verb"}, {"word": "constructor", "type": "Noun"}, {"word": "somewhat", "type": "Adverb"}, {"word": "stiffly", "type": "Adjective"}, {"word": "knows", "type": "Verb"}, {"word": "might", "type": "Other"}, {"word": "even", "type": "Adverb"}, {"word": "liked", "type": "Verb"}, {"word": "order", "type": "Noun"}, {"word": "thrown", "type": "Adverb"}, {"word": "chains", "type": "Noun"}, {"word": "tortured", "type": "Verb"}, {"word": "death", "type": "Noun"}, {"word": "safe", "type": "Adjective"}, {"word": "would", "type": "Other"}, {"word": "sure", "type": "Adjective"}, {"word": "way", "type": "Noun"}, {"word": "nipping", "type": "Verb"}, {"word": "bud", "type": "Noun"}, {"word": "gossip", "type": "Noun"}, {"word": "common", "type": "Adjective"}, {"word": "vagabond", "type": "Noun"}, {"word": "tinkerer", "type": "Noun"}, {"word": "presented", "type": "Verb"}, {"word": "mighty", "type": "Adjective"}, {"word": "monarch", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "sensible", "type": "Adjective"}, {"word": "enough", "type": "Adverb"}, {"word": "however", "type": "Adverb"}, {"word": "see", "type": "Verb"}, {"word": "question", "type": "Noun"}, {"word": "owing", "type": "Verb"}, {"word": "fundamental", "type": "Adjective"}, {"word": "disproportion", "type": "Noun"}, {"word": "fleas", "type": "Noun"}, {"word": "could", "type": "Other"}, {"word": "sooner", "type": "Verb"}, {"word": "take", "type": "Verb"}, {"word": "host", "type": "Noun"}, {"word": "captivity", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "army", "type": "Noun"}, {"word": "seize", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "another", "type": "Other"}, {"word": "cold", "type": "Adjective"}, {"word": "nod", "type": "Noun"}, {"word": "stuck", "type": "Verb"}, {"word": "orb", "type": "Noun"}, {"word": "scepter", "type": "Noun"}, {"word": "arm", "type": "Noun"}, {"word": "lifted", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "grunt", "type": "Noun"}, {"word": "took", "type": "Verb"}, {"word": "humble", "type": "Adjective"}, {"word": "hut", "type": "Noun"}, {"word": "exile", "type": "Noun"}, {"word": "blazing", "type": "Adjective"}, {"word": "day", "type": "Noun"}, {"word": "alternated", "type": "Verb"}, {"word": "murky", "type": "Adjective"}, {"word": "night", "type": "Noun"}, {"word": "outside", "type": "Other"}, {"word": "according", "type": "Verb"}, {"word": "rhythm", "type": "Noun"}, {"word": "asteroid", "type": "Noun"}, {"word": "rotation", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "acknowledged", "type": "Verb"}, {"word": "subjects", "type": "Noun"}, {"word": "greatest", "type": "Adjective"}, {"word": "world", "type": "Noun"}, {"word": "diligently", "type": "Adverb"}, {"word": "reigned", "type": "Verb"}, {"word": "bidding", "type": "Verb"}, {"word": "forbidding", "type": "Verb"}, {"word": "beheading", "type": "Verb"}, {"word": "rewarding", "type": "Verb"}, {"word": "ways", "type": "Noun"}, {"word": "incessantly", "type": "Adverb"}, {"word": "spurring", "type": "Verb"}, {"word": "little", "type": "Adjective"}, {"word": "ones", "type": "Noun"}, {"word": "perfect", "type": "Verb"}, {"word": "fealty", "type": "Noun"}, {"word": "worship", "type": "Noun"}, {"word": "throne", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "returned", "type": "Verb"}, {"word": "home", "type": "Noun"}, {"word": "related", "type": "Verb"}, {"word": "friend", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "without", "type": "Other"}, {"word": "pride", "type": "Noun"}, {"word": "employed", "type": "Verb"}, {"word": "constructor", "type": "Noun"}, {"word": "genius", "type": "Noun"}, {"word": "indulge", "type": "Verb"}, {"word": "autocratic", "type": "Adjective"}, {"word": "aspirations", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "time", "type": "Noun"}, {"word": "safeguard", "type": "Verb"}, {"word": "democratic", "type": "Adjective"}, {"word": "aspirations", "type": "Noun"}, {"word": "former", "type": "Adjective"}, {"word": "subjects", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "surprisingly", "type": "Adverb"}, {"word": "enough", "type": "Adverb"}, {"word": "words", "type": "Noun"}, {"word": "praise", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "fact", "type": "Noun"}, {"word": "seemed", "type": "Verb"}, {"word": "rebuke", "type": "Verb"}, {"word": "expression", "type": "Noun"}, {"word": "understood", "type": "Verb"}, {"word": "correctly", "type": "Adverb"}, {"word": "said", "type": "Verb"}, {"word": "last", "type": "Adjective"}, {"word": "gave", "type": "Verb"}, {"word": "brutal", "type": "Adjective"}, {"word": "despot", "type": "Noun"}, {"word": "born", "type": "Verb"}, {"word": "slave", "type": "Verb"}, {"word": "master", "type": "Noun"}, {"word": "slavering", "type": "Verb"}, {"word": "sadist", "type": "Noun"}, {"word": "monger", "type": "Noun"}, {"word": "gave", "type": "Verb"}, {"word": "whole", "type": "Adjective"}, {"word": "civilization", "type": "Noun"}, {"word": "rule", "type": "Noun"}, {"word": "dominion", "type": "Noun"}, {"word": "forever", "type": "Adverb"}, {"word": "tell", "type": "Verb"}, {"word": "moreover", "type": "Adverb"}, {"word": "cries", "type": "Noun"}, {"word": "joy", "type": "Noun"}, {"word": "brought", "type": "Verb"}, {"word": "repeal", "type": "Noun"}, {"word": "fraction", "type": "Noun"}, {"word": "cruel", "type": "Noun"}, {"word": "decrees", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "could", "type": "Other"}, {"word": "done", "type": "Verb"}, {"word": "thing", "type": "Noun"}, {"word": "must", "type": "Other"}, {"word": "joking", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "exclaimed", "type": "Verb"}, {"word": "really", "type": "Adverb"}, {"word": "whole", "type": "Adjective"}, {"word": "kingdom", "type": "Noun"}, {"word": "fits", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "three", "type": "Other"}, {"word": "feet", "type": "Noun"}, {"word": "two", "type": "Other"}, {"word": "two", "type": "Other"}, {"word": "half", "type": "Noun"}, {"word": "model", "type": "Noun"}, {"word": "model", "type": "Noun"}, {"word": "mean", "type": "Verb"}, {"word": "civilization", "type": "Noun"}, {"word": "obviously", "type": "Adverb"}, {"word": "except", "type": "Other"}, {"word": "hundred", "type": "Other"}, {"word": "million", "type": "Other"}, {"word": "times", "type": "Noun"}, {"word": "know", "type": "Verb"}, {"word": "civilizations", "type": "Noun"}, {"word": "hundred", "type": "Other"}, {"word": "million", "type": "Other"}, {"word": "times", "type": "Noun"}, {"word": "larger", "type": "Adjective"}, {"word": "would", "type": "Other"}, {"word": "model", "type": "Noun"}, {"word": "importance", "type": "Noun"}, {"word": "dimensions", "type": "Noun"}, {"word": "anyway", "type": "Adverb"}, {"word": "box", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "journey", "type": "Noun"}, {"word": "capital", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "corners", "type": "Noun"}, {"word": "take", "type": "Verb"}, {"word": "months", "type": "Noun"}, {"word": "inhabitants", "type": "Noun"}, {"word": "suffer", "type": "Verb"}, {"word": "know", "type": "Verb"}, {"word": "burden", "type": "Noun"}, {"word": "labor", "type": "Noun"}, {"word": "die", "type": "Verb"}, {"word": "minute", "type": "Noun"}, {"word": "know", "type": "Verb"}, {"word": "processes", "type": "Noun"}, {"word": "take", "type": "Verb"}, {"word": "place", "type": "Noun"}, {"word": "programmed", "type": "Verb"}, {"word": "genuine", "type": "Adjective"}, {"word": "genuine", "type": "Verb"}, {"word": "mean", "type": "Verb"}, {"word": "say", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "empty", "type": "Adjective"}, {"word": "parades", "type": "Noun"}, {"word": "tortures", "type": "Noun"}, {"word": "beheadings", "type": "Noun"}, {"word": "merely", "type": "Adverb"}, {"word": "illusion", "type": "Noun"}, {"word": "illusion", "type": "Noun"}, {"word": "since", "type": "Other"}, {"word": "reality", "type": "Noun"}, {"word": "though", "type": "Adverb"}, {"word": "purely", "type": "Adverb"}, {"word": "certain", "type": "Adjective"}, {"word": "microscopic", "type": "Noun"}, {"word": "phenomena", "type": "Noun"}, {"word": "produced", "type": "Verb"}, {"word": "manipulating", "type": "Verb"}, {"word": "atoms", "type": "Noun"}, {"word": "said", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "point", "type": "Noun"}, {"word": "births", "type": "Noun"}, {"word": "loves", "type": "Noun"}, {"word": "acts", "type": "Noun"}, {"word": "heroism", "type": "Noun"}, {"word": "denunciations", "type": "Noun"}, {"word": "nothing", "type": "Noun"}, {"word": "minuscule", "type": "Noun"}, {"word": "capering", "type": "Noun"}, {"word": "electrons", "type": "Noun"}, {"word": "space", "type": "Noun"}, {"word": "precisely", "type": "Adverb"}, {"word": "arranged", "type": "Verb"}, {"word": "skill", "type": "Noun"}, {"word": "nonlinear", "type": "Adjective"}, {"word": "craft", "type": "Noun"}, {"word": "enough", "type": "Noun"}, {"word": "boasting", "type": "Noun"}, {"word": "another", "type": "Other"}, {"word": "word", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "snapped", "type": "Verb"}, {"word": "processes", "type": "Noun"}, {"word": "course", "type": "Noun"}, {"word": "occur", "type": "Verb"}, {"word": "among", "type": "Other"}, {"word": "infinitesimal", "type": "Adjective"}, {"word": "clouds", "type": "Noun"}, {"word": "electrical", "type": "Adjective"}, {"word": "charge", "type": "Noun"}, {"word": "know", "type": "Verb"}, {"word": "phenomenological", "type": "Adjective"}, {"word": "events", "type": "Noun"}, {"word": "dawns", "type": "Noun"}, {"word": "sunsets", "type": "Noun"}, {"word": "bloody", "type": "Adjective"}, {"word": "battles", "type": "Noun"}, {"word": "generated", "type": "Verb"}, {"word": "concatenation", "type": "Noun"}, {"word": "real", "type": "Adjective"}, {"word": "variables", "type": "Noun"}, {"word": "certainly", "type": "Adverb"}, {"word": "well", "type": "Adverb"}, {"word": "examine", "type": "Verb"}, {"word": "us", "type": "Other"}, {"word": "physically", "type": "Adverb"}, {"word": "mechanistically", "type": "Adverb"}, {"word": "statistically", "type": "Adverb"}, {"word": "meticulously", "type": "Adverb"}, {"word": "nothing", "type": "Noun"}, {"word": "miniscule", "type": "Noun"}, {"word": "capering", "type": "Noun"}, {"word": "electron", "type": "Noun"}, {"word": "clouds", "type": "Noun"}, {"word": "positive", "type": "Adjective"}, {"word": "negative", "type": "Adjective"}, {"word": "charges", "type": "Noun"}, {"word": "arranged", "type": "Verb"}, {"word": "space", "type": "Noun"}, {"word": "existence", "type": "Noun"}, {"word": "result", "type": "Noun"}, {"word": "subatomic", "type": "Adjective"}, {"word": "collisions", "type": "Noun"}, {"word": "interplay", "type": "Noun"}, {"word": "particles", "type": "Noun"}, {"word": "though", "type": "Other"}, {"word": "perceive", "type": "Adjective"}, {"word": "molecular", "type": "Adjective"}, {"word": "cartwheels", "type": "Noun"}, {"word": "fear", "type": "Noun"}, {"word": "longing", "type": "Noun"}, {"word": "meditation", "type": "Noun"}, {"word": "daydream", "type": "Verb"}, {"word": "transpires", "type": "Verb"}, {"word": "within", "type": "Other"}, {"word": "brain", "type": "Noun"}, {"word": "binary", "type": "Adjective"}, {"word": "algebra", "type": "Noun"}, {"word": "connecting", "type": "Verb"}, {"word": "disconnecting", "type": "Verb"}, {"word": "circuits", "type": "Noun"}, {"word": "continual", "type": "Adjective"}, {"word": "meandering", "type": "Noun"}, {"word": "electrons", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "equate", "type": "Verb"}, {"word": "existence", "type": "Noun"}, {"word": "imitation", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "locked", "type": "Verb"}, {"word": "glass", "type": "Noun"}, {"word": "box", "type": "Noun"}, {"word": "cried", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "really", "type": "Adverb"}, {"word": "going", "type": "Verb"}, {"word": "far", "type": "Adverb"}, {"word": "purpose", "type": "Noun"}, {"word": "simply", "type": "Adverb"}, {"word": "fashion", "type": "Noun"}, {"word": "simulator", "type": "Noun"}, {"word": "statehood", "type": "Noun"}, {"word": "model", "type": "Noun"}, {"word": "cybernetically", "type": "Adverb"}, {"word": "perfect", "type": "Adjective"}, {"word": "nothing", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "perfection", "type": "Noun"}, {"word": "curse", "type": "Noun"}, {"word": "draws", "type": "Verb"}, {"word": "upon", "type": "Adverb"}, {"word": "every", "type": "Other"}, {"word": "endeavor", "type": "Noun"}, {"word": "end", "type": "Noun"}, {"word": "unforeseeable", "type": "Adjective"}, {"word": "consequences", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "said", "type": "Verb"}, {"word": "stentorian", "type": "Adjective"}, {"word": "voice", "type": "Noun"}, {"word": "imperfect", "type": "Adjective"}, {"word": "imitator", "type": "Noun"}, {"word": "wishing", "type": "Verb"}, {"word": "inflict", "type": "Verb"}, {"word": "pain", "type": "Noun"}, {"word": "build", "type": "Verb"}, {"word": "crude", "type": "Noun"}, {"word": "idol", "type": "Noun"}, {"word": "wood", "type": "Noun"}, {"word": "wax", "type": "Noun"}, {"word": "give", "type": "Verb"}, {"word": "makeshift", "type": "Adjective"}, {"word": "semblance", "type": "Noun"}, {"word": "sentient", "type": "Noun"}, {"word": "torture", "type": "Noun"}, {"word": "thing", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "paltry", "type": "Adjective"}, {"word": "mockery", "type": "Noun"}, {"word": "indeed", "type": "Adverb"}, {"word": "consider", "type": "Verb"}, {"word": "succession", "type": "Noun"}, {"word": "improvements", "type": "Noun"}, {"word": "practice", "type": "Noun"}, {"word": "consider", "type": "Verb"}, {"word": "next", "type": "Adjective"}, {"word": "sculptor", "type": "Noun"}, {"word": "builds", "type": "Verb"}, {"word": "doll", "type": "Noun"}, {"word": "recording", "type": "Noun"}, {"word": "belly", "type": "Noun"}, {"word": "may", "type": "Other"}, {"word": "groan", "type": "Verb"}, {"word": "beneath", "type": "Verb"}, {"word": "blows", "type": "Noun"}, {"word": "consider", "type": "Verb"}, {"word": "doll", "type": "Noun"}, {"word": "beaten", "type": "Noun"}, {"word": "begs", "type": "Noun"}, {"word": "mercy", "type": "Noun"}, {"word": "longer", "type": "Adverb"}, {"word": "crude", "type": "Noun"}, {"word": "idol", "type": "Noun"}, {"word": "homeostat", "type": "Noun"}, {"word": "consider", "type": "Verb"}, {"word": "doll", "type": "Noun"}, {"word": "sheds", "type": "Verb"}, {"word": "tears", "type": "Noun"}, {"word": "doll", "type": "Noun"}, {"word": "bleeds", "type": "Verb"}, {"word": "doll", "type": "Noun"}, {"word": "fears", "type": "Verb"}, {"word": "death", "type": "Noun"}, {"word": "though", "type": "Other"}, {"word": "also", "type": "Adverb"}, {"word": "longs", "type": "Verb"}, {"word": "peace", "type": "Noun"}, {"word": "death", "type": "Noun"}, {"word": "bring", "type": "Verb"}, {"word": "see", "type": "Verb"}, {"word": "imitator", "type": "Noun"}, {"word": "perfect", "type": "Adjective"}, {"word": "must", "type": "Other"}, {"word": "imitation", "type": "Noun"}, {"word": "semblance", "type": "Noun"}, {"word": "becomes", "type": "Verb"}, {"word": "truth", "type": "Noun"}, {"word": "pretense", "type": "Noun"}, {"word": "reality", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "took", "type": "Verb"}, {"word": "untold", "type": "Adjective"}, {"word": "number", "type": "Noun"}, {"word": "creatures", "type": "Noun"}, {"word": "capable", "type": "Adjective"}, {"word": "suffering", "type": "Verb"}, {"word": "abandoned", "type": "Verb"}, {"word": "forever", "type": "Adverb"}, {"word": "rule", "type": "Noun"}, {"word": "wicked", "type": "Adjective"}, {"word": "tyrant", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "committed", "type": "Verb"}, {"word": "terrible", "type": "Adjective"}, {"word": "crime", "type": "Noun"}, {"word": "sheer", "type": "Noun"}, {"word": "sophistry", "type": "Noun"}, {"word": "shouted", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "louder", "type": "Noun"}, {"word": "felt", "type": "Verb"}, {"word": "force", "type": "Noun"}, {"word": "friend", "type": "Noun"}, {"word": "argument", "type": "Noun"}, {"word": "electrons", "type": "Noun"}, {"word": "meander", "type": "Other"}, {"word": "brains", "type": "Noun"}, {"word": "phonograph", "type": "Noun"}, {"word": "records", "type": "Noun"}, {"word": "well", "type": "Adverb"}, {"word": "proves", "type": "Verb"}, {"word": "nothing", "type": "Noun"}, {"word": "certainly", "type": "Adverb"}, {"word": "gives", "type": "Verb"}, {"word": "grounds", "type": "Noun"}, {"word": "hypostatical", "type": "Adjective"}, {"word": "analogies", "type": "Noun"}, {"word": "subjects", "type": "Noun"}, {"word": "monster", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "fact", "type": "Noun"}, {"word": "die", "type": "Noun"}, {"word": "decapitated", "type": "Verb"}, {"word": "sob", "type": "Noun"}, {"word": "fight", "type": "Noun"}, {"word": "fall", "type": "Noun"}, {"word": "love", "type": "Noun"}, {"word": "since", "type": "Other"}, {"word": "set", "type": "Verb"}, {"word": "parameters", "type": "Noun"}, {"word": "impossible", "type": "Adjective"}, {"word": "say", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "feel", "type": "Verb"}, {"word": "anything", "type": "Noun"}, {"word": "process", "type": "Noun"}, {"word": "electrons", "type": "Noun"}, {"word": "jumping", "type": "Verb"}, {"word": "around", "type": "Adverb"}, {"word": "heads", "type": "Noun"}, {"word": "tell", "type": "Verb"}, {"word": "nothing", "type": "Noun"}, {"word": "look", "type": "Verb"}, {"word": "inside", "type": "Other"}, {"word": "head", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "also", "type": "Adverb"}, {"word": "see", "type": "Verb"}, {"word": "nothing", "type": "Noun"}, {"word": "electrons", "type": "Noun"}, {"word": "replied", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "come", "type": "Noun"}, {"word": "pretend", "type": "Verb"}, {"word": "understand", "type": "Verb"}, {"word": "saying", "type": "Verb"}, {"word": "know", "type": "Verb"}, {"word": "stupid", "type": "Adjective"}, {"word": "phonograph", "type": "Noun"}, {"word": "record", "type": "Noun"}, {"word": "wo", "type": "Other"}, {"word": "run", "type": "Verb"}, {"word": "errands", "type": "Noun"}, {"word": "wo", "type": "Other"}, {"word": "beg", "type": "Verb"}, {"word": "mercy", "type": "Noun"}, {"word": "fall", "type": "Noun"}, {"word": "knees", "type": "Noun"}, {"word": "say", "type": "Verb"}, {"word": "way", "type": "Noun"}, {"word": "knowing", "type": "Verb"}, {"word": "whether", "type": "Other"}, {"word": "excelsius", "type": "Noun"}, {"word": "subjects", "type": "Noun"}, {"word": "groan", "type": "Noun"}, {"word": "beaten", "type": "Noun"}, {"word": "purely", "type": "Adverb"}, {"word": "electrons", "type": "Noun"}, {"word": "hopping", "type": "Verb"}, {"word": "inside", "type": "Adjective"}, {"word": "like", "type": "Other"}, {"word": "wheels", "type": "Noun"}, {"word": "grinding", "type": "Verb"}, {"word": "mimicry", "type": "Noun"}, {"word": "voice", "type": "Noun"}, {"word": "whether", "type": "Other"}, {"word": "really", "type": "Adverb"}, {"word": "groan", "type": "Verb"}, {"word": "honestly", "type": "Adverb"}, {"word": "experience", "type": "Verb"}, {"word": "pain", "type": "Noun"}, {"word": "pretty", "type": "Adjective"}, {"word": "distinction", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "sufferer", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "hands", "type": "Verb"}, {"word": "suffering", "type": "Noun"}, {"word": "may", "type": "Other"}, {"word": "touch", "type": "Verb"}, {"word": "weigh", "type": "Verb"}, {"word": "bite", "type": "Verb"}, {"word": "like", "type": "Other"}, {"word": "coin", "type": "Noun"}, {"word": "sufferer", "type": "Noun"}, {"word": "one", "type": "Other"}, {"word": "behaves", "type": "Verb"}, {"word": "like", "type": "Other"}, {"word": "sufferer", "type": "Noun"}, {"word": "prove", "type": "Noun"}, {"word": "feel", "type": "Verb"}, {"word": "think", "type": "Verb"}, {"word": "way", "type": "Noun"}, {"word": "exist", "type": "Verb"}, {"word": "conscious", "type": "Adjective"}, {"word": "enclosure", "type": "Noun"}, {"word": "two", "type": "Other"}, {"word": "abysses", "type": "Noun"}, {"word": "oblivion", "type": "Noun"}, {"word": "abyss", "type": "Noun"}, {"word": "birth", "type": "Noun"}, {"word": "abyss", "type": "Noun"}, {"word": "follows", "type": "Verb"}, {"word": "death", "type": "Noun"}, {"word": "prove", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "leave", "type": "Verb"}, {"word": "prove", "type": "Verb"}, {"word": "imitated", "type": "Verb"}, {"word": "suffering", "type": "Noun"}, {"word": "create", "type": "Verb"}, {"word": "know", "type": "Verb"}, {"word": "perfectly", "type": "Adverb"}, {"word": "well", "type": "Adverb"}, {"word": "impossible", "type": "Adjective"}, {"word": "answered", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "quietly", "type": "Adverb"}, {"word": "even", "type": "Adverb"}, {"word": "took", "type": "Verb"}, {"word": "instruments", "type": "Noun"}, {"word": "hand", "type": "Noun"}, {"word": "box", "type": "Noun"}, {"word": "still", "type": "Adverb"}, {"word": "empty", "type": "Adjective"}, {"word": "anticipate", "type": "Verb"}, {"word": "possibility", "type": "Noun"}, {"word": "precisely", "type": "Adverb"}, {"word": "proof", "type": "Noun"}, {"word": "order", "type": "Noun"}, {"word": "rule", "type": "Verb"}, {"word": "otherwise", "type": "Adverb"}, {"word": "monarch", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "sooner", "type": "Adverb"}, {"word": "later", "type": "Adverb"}, {"word": "would", "type": "Other"}, {"word": "gotten", "type": "Verb"}, {"word": "impression", "type": "Noun"}, {"word": "subjects", "type": "Noun"}, {"word": "real", "type": "Adjective"}, {"word": "subjects", "type": "Noun"}, {"word": "puppets", "type": "Noun"}, {"word": "marionettes", "type": "Noun"}, {"word": "try", "type": "Verb"}, {"word": "understand", "type": "Verb"}, {"word": "way", "type": "Noun"}, {"word": "anything", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "destroyed", "type": "Verb"}, {"word": "littlest", "type": "Adjective"}, {"word": "way", "type": "Noun"}, {"word": "illusion", "type": "Noun"}, {"word": "complete", "type": "Adjective"}, {"word": "reality", "type": "Noun"}, {"word": "would", "type": "Other"}, {"word": "also", "type": "Adverb"}, {"word": "destroyed", "type": "Verb"}, {"word": "importance", "type": "Noun"}, {"word": "dignity", "type": "Noun"}, {"word": "governing", "type": "Noun"}, {"word": "turned", "type": "Verb"}, {"word": "nothing", "type": "Noun"}, {"word": "mechanical", "type": "Adjective"}, {"word": "game", "type": "Noun"}, {"word": "understand", "type": "Verb"}, {"word": "understand", "type": "Verb"}, {"word": "well", "type": "Adverb"}, {"word": "cried", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "intentions", "type": "Noun"}, {"word": "noblest", "type": "Adjective"}, {"word": "sought", "type": "Verb"}, {"word": "construct", "type": "Verb"}, {"word": "kingdom", "type": "Noun"}, {"word": "lifelike", "type": "Adverb"}, {"word": "possible", "type": "Adjective"}, {"word": "similar", "type": "Adjective"}, {"word": "real", "type": "Adjective"}, {"word": "kingdom", "type": "Noun"}, {"word": "one", "type": "Noun"}, {"word": "absolutely", "type": "Adverb"}, {"word": "one", "type": "Noun"}, {"word": "could", "type": "Other"}, {"word": "ever", "type": "Adverb"}, {"word": "tell", "type": "Verb"}, {"word": "difference", "type": "Noun"}, {"word": "afraid", "type": "Adjective"}, {"word": "successful", "type": "Adjective"}, {"word": "hours", "type": "Noun"}, {"word": "passed", "type": "Verb"}, {"word": "since", "type": "Other"}, {"word": "return", "type": "Noun"}, {"word": "ones", "type": "Noun"}, {"word": "imprisoned", "type": "Verb"}, {"word": "box", "type": "Noun"}, {"word": "whole", "type": "Adjective"}, {"word": "centuries", "type": "Noun"}, {"word": "gone", "type": "Verb"}, {"word": "many", "type": "Adjective"}, {"word": "beings", "type": "Noun"}, {"word": "many", "type": "Adjective"}, {"word": "lives", "type": "Noun"}, {"word": "wasted", "type": "Verb"}, {"word": "gratify", "type": "Verb"}, {"word": "feed", "type": "Verb"}, {"word": "vanity", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "without", "type": "Other"}, {"word": "another", "type": "Other"}, {"word": "word", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "rushed", "type": "Verb"}, {"word": "back", "type": "Adverb"}, {"word": "ship", "type": "Noun"}, {"word": "saw", "type": "Verb"}, {"word": "friend", "type": "Noun"}, {"word": "coming", "type": "Verb"}, {"word": "blasted", "type": "Verb"}, {"word": "space", "type": "Noun"}, {"word": "pointed", "type": "Verb"}, {"word": "bow", "type": "Noun"}, {"word": "two", "type": "Other"}, {"word": "great", "type": "Adjective"}, {"word": "clusters", "type": "Noun"}, {"word": "eternal", "type": "Adjective"}, {"word": "flame", "type": "Noun"}, {"word": "opened", "type": "Verb"}, {"word": "throttle", "type": "Noun"}, {"word": "way", "type": "Noun"}, {"word": "klapaucius", "type": "Noun"}, {"word": "said", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "hopeless", "type": "Adjective"}, {"word": "always", "type": "Adverb"}, {"word": "act", "type": "Verb"}, {"word": "first", "type": "Adjective"}, {"word": "think", "type": "Verb"}, {"word": "later", "type": "Adverb"}, {"word": "intend", "type": "Verb"}, {"word": "get", "type": "Verb"}, {"word": "take", "type": "Verb"}, {"word": "kingdom", "type": "Noun"}, {"word": "away", "type": "Adverb"}, {"word": "destroy", "type": "Noun"}, {"word": "trurl", "type": "Noun"}, {"word": "shout", "type": "Verb"}, {"word": "choked", "type": "Verb"}, {"word": "first", "type": "Adjective"}, {"word": "syllable", "type": "Adjective"}, {"word": "realized", "type": "Verb"}, {"word": "saying", "type": "Verb"}, {"word": "finally", "type": "Adverb"}, {"word": "mumbled", "type": "Verb"}, {"word": "hold", "type": "Verb"}, {"word": "election", "type": "Noun"}, {"word": "let", "type": "Verb"}, {"word": "choose", "type": "Verb"}, {"word": "rulers", "type": "Noun"}, {"word": "among", "type": "Other"}, {"word": "programmed", "type": "Verb"}, {"word": "feudal", "type": "Adjective"}, {"word": "lords", "type": "Noun"}, {"word": "shiftless", "type": "Adjective"}, {"word": "vassals", "type": "Noun"}, {"word": "good", "type": "Adjective"}, {"word": "would", "type": "Other"}, {"word": "election", "type": "Noun"}, {"word": "first", "type": "Noun"}, {"word": "undo", "type": "Verb"}, {"word": "entire", "type": "Adjective"}, {"word": "structure", "type": "Noun"}, {"word": "kingdom", "type": "Noun"}, {"word": "assemble", "type": "Adjective"}, {"word": "scratch", "type": "Noun"}, {"word": "exclaimed", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "changing", "type": "Noun"}, {"word": "structures", "type": "Noun"}, {"word": "end", "type": "Verb"}, {"word": "tampering", "type": "Noun"}, {"word": "minds", "type": "Noun"}, {"word": "begin", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "answer", "type": "Noun"}, {"word": "flew", "type": "Verb"}, {"word": "gloomy", "type": "Adjective"}, {"word": "silence", "type": "Noun"}, {"word": "till", "type": "Verb"}, {"word": "planet", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "came", "type": "Verb"}, {"word": "view", "type": "Noun"}, {"word": "circled", "type": "Verb"}, {"word": "preparing", "type": "Verb"}, {"word": "land", "type": "Verb"}, {"word": "beheld", "type": "Verb"}, {"word": "amazing", "type": "Adjective"}, {"word": "sight", "type": "Noun"}, {"word": "entire", "type": "Adjective"}, {"word": "planet", "type": "Noun"}, {"word": "covered", "type": "Verb"}, {"word": "countless", "type": "Adjective"}, {"word": "signs", "type": "Noun"}, {"word": "intelligent", "type": "Adjective"}, {"word": "life", "type": "Noun"}, {"word": "microscopic", "type": "Noun"}, {"word": "bridges", "type": "Verb"}, {"word": "like", "type": "Other"}, {"word": "tiny", "type": "Adjective"}, {"word": "lines", "type": "Noun"}, {"word": "spanned", "type": "Verb"}, {"word": "every", "type": "Other"}, {"word": "rill", "type": "Noun"}, {"word": "rivulet", "type": "Noun"}, {"word": "puddles", "type": "Noun"}, {"word": "reflecting", "type": "Verb"}, {"word": "stars", "type": "Noun"}, {"word": "full", "type": "Adjective"}, {"word": "microscopic", "type": "Adjective"}, {"word": "boats", "type": "Noun"}, {"word": "like", "type": "Other"}, {"word": "floating", "type": "Verb"}, {"word": "chips", "type": "Noun"}, {"word": "night", "type": "Noun"}, {"word": "side", "type": "Noun"}, {"word": "sphere", "type": "Noun"}, {"word": "dotted", "type": "Verb"}, {"word": "glimmering", "type": "Verb"}, {"word": "cities", "type": "Noun"}, {"word": "day", "type": "Noun"}, {"word": "side", "type": "Verb"}, {"word": "one", "type": "Other"}, {"word": "could", "type": "Other"}, {"word": "make", "type": "Verb"}, {"word": "flourishing", "type": "Verb"}, {"word": "metropolises", "type": "Noun"}, {"word": "though", "type": "Other"}, {"word": "inhabitants", "type": "Noun"}, {"word": "much", "type": "Adverb"}, {"word": "little", "type": "Adjective"}, {"word": "observe", "type": "Verb"}, {"word": "even", "type": "Adverb"}, {"word": "strongest", "type": "Adjective"}, {"word": "lens", "type": "Noun"}, {"word": "king", "type": "Noun"}, {"word": "trace", "type": "Noun"}, {"word": "earth", "type": "Noun"}, {"word": "swallowed", "type": "Verb"}, {"word": "said", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "awed", "type": "Adjective"}, {"word": "whisper", "type": "Noun"}, {"word": "done", "type": "Verb"}, {"word": "somehow", "type": "Noun"}, {"word": "managed", "type": "Verb"}, {"word": "break", "type": "Verb"}, {"word": "walls", "type": "Noun"}, {"word": "box", "type": "Noun"}, {"word": "occupy", "type": "Verb"}, {"word": "asteroid", "type": "Noun"}, {"word": "look", "type": "Noun"}, {"word": "said", "type": "Verb"}, {"word": "klapaucius", "type": "Noun"}, {"word": "pointing", "type": "Verb"}, {"word": "little", "type": "Adjective"}, {"word": "cloud", "type": "Adjective"}, {"word": "larger", "type": "Adjective"}, {"word": "thimble", "type": "Adjective"}, {"word": "shaped", "type": "Verb"}, {"word": "like", "type": "Other"}, {"word": "mushroom", "type": "Noun"}, {"word": "slowly", "type": "Adverb"}, {"word": "rose", "type": "Verb"}, {"word": "atmosphere", "type": "Noun"}, {"word": "discovered", "type": "Verb"}, {"word": "atomic", "type": "Adjective"}, {"word": "energy", "type": "Noun"}, {"word": "see", "type": "Verb"}, {"word": "bit", "type": "Noun"}, {"word": "glass", "type": "Noun"}, {"word": "remains", "type": "Noun"}, {"word": "box", "type": "Noun"}, {"word": "made", "type": "Verb"}, {"word": "sort", "type": "Noun"}, {"word": "temple", "type": "Noun"}, {"word": "understand", "type": "Verb"}, {"word": "model", "type": "Noun"}, {"word": "process", "type": "Noun"}, {"word": "large", "type": "Adjective"}, {"word": "number", "type": "Noun"}, {"word": "parameters", "type": "Noun"}, {"word": "simulation", "type": "Noun"}, {"word": "monarch", "type": "Noun"}, {"word": "practice", "type": "Noun"}, {"word": "necessary", "type": "Adjective"}, {"word": "feedback", "type": "Noun"}, {"word": "variables", "type": "Noun"}, {"word": "multistats", "type": "Noun"}, {"word": "muttered", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "dumbfounded", "type": "Verb"}, {"word": "yes", "type": "Other"}, {"word": "made", "type": "Verb"}, {"word": "unforgivable", "type": "Adjective"}, {"word": "mistake", "type": "Noun"}, {"word": "overperfecting", "type": "Verb"}, {"word": "replica", "type": "Noun"}, {"word": "wanting", "type": "Verb"}, {"word": "build", "type": "Verb"}, {"word": "mere", "type": "Adjective"}, {"word": "clocklike", "type": "Noun"}, {"word": "mechanism", "type": "Noun"}, {"word": "inadvertently", "type": "Adverb"}, {"word": "punctilious", "type": "Adjective"}, {"word": "way", "type": "Noun"}, {"word": "created", "type": "Verb"}, {"word": "possible", "type": "Adjective"}, {"word": "logical", "type": "Adjective"}, {"word": "inevitable", "type": "Adjective"}, {"word": "became", "type": "Verb"}, {"word": "antithesis", "type": "Noun"}, {"word": "mechanism", "type": "Noun"}, {"word": "please", "type": "Noun"}, {"word": "cried", "type": "Verb"}, {"word": "trurl", "type": "Noun"}, {"word": "looked", "type": "Verb"}, {"word": "upon", "type": "Other"}, {"word": "asteroid", "type": "Noun"}, {"word": "silence", "type": "Noun"}, {"word": "suddenly", "type": "Adverb"}, {"word": "something", "type": "Noun"}, {"word": "bumped", "type": "Verb"}, {"word": "ship", "type": "Noun"}, {"word": "rather", "type": "Adverb"}, {"word": "grazed", "type": "Verb"}, {"word": "slightly", "type": "Adverb"}, {"word": "saw", "type": "Verb"}, {"word": "object", "type": "Noun"}, {"word": "illuminated", "type": "Verb"}, {"word": "thin", "type": "Adjective"}, {"word": "ribbon", "type": "Noun"}, {"word": "flame", "type": "Noun"}, {"word": "issued", "type": "Verb"}, {"word": "tail", "type": "Noun"}, {"word": "ship", "type": "Noun"}, {"word": "probably", "type": "Adverb"}, {"word": "perhaps", "type": "Adverb"}, {"word": "artificial", "type": "Adjective"}, {"word": "satellite", "type": "Noun"}, {"word": "though", "type": "Other"}, {"word": "remarkably", "type": "Adverb"}, {"word": "similar", "type": "Adjective"}, {"word": "one", "type": "Other"}, {"word": "steel", "type": "Noun"}, {"word": "boots", "type": "Verb"}, {"word": "tyrant", "type": "Adjective"}, {"word": "excelsius", "type": "Noun"}, {"word": "used", "type": "Verb"}, {"word": "wear", "type": "Verb"}, {"word": "constructors", "type": "Noun"}, {"word": "raised", "type": "Verb"}, {"word": "eyes", "type": "Noun"}, {"word": "beheld", "type": "Verb"}, {"word": "heavenly", "type": "Adjective"}, {"word": "body", "type": "Noun"}, {"word": "shining", "type": "Verb"}, {"word": "high", "type": "Adjective"}, {"word": "tiny", "type": "Adjective"}, {"word": "planet", "type": "Noun"}, {"word": "previously", "type": "Adverb"}, {"word": "recognized", "type": "Verb"}, {"word": "cold", "type": "Noun"}, {"word": "pale", "type": "Adjective"}, {"word": "orb", "type": "Noun"}, {"word": "stern", "type": "Adjective"}, {"word": "features", "type": "Noun"}, {"word": "excelsius", "type": "Noun"}, {"word": "way", "type": "Noun"}, {"word": "become", "type": "Verb"}, {"word": "moon", "type": "Noun"}, {"word": "microminians", "type": "Noun"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,268 @@
+---
+title: "EDA"
+---
+
+# Librerías
+
+```{python}
+import pandas as pd
+from vega_datasets import data
+import altair as alt
+```
+
+# Cargar DS
+
+```{python}
+movies_extended = data.movies()
+movies_extended.head()
+```
+
+# Tipo de datos del DS
+
+```{python}
+movies_extended.info()
+```
+
+# Valores faltantes
+
+```{python}
+nan_percent = movies_extended.isna().mean()*100
+nan_percent_sorted = nan_percent.sort_values(ascending=False).round(2)
+nan_percent_sorted
+```
+
+## Melt del DS
+
+```{python}
+movies_nans = movies_extended.isna().reset_index().melt(
+    id_vars='index',
+    var_name='column',
+    value_name ='NaN'
+)
+movies_nans
+```
+
+## Eliminar restricción en Altair
+
+```{python}
+alt.data_transformers.disable_max_rows()
+```
+
+## Visualización de datos faltantes
+
+```{python}
+
+alt.Chart(movies_nans).mark_rect().encode(
+    alt.X('index:O'),
+    alt.Y('column'),
+    alt.Color('NaN:N'),
+    alt.Stroke('NaN:N')
+).properties(
+    width=800
+)
+```
+
+## Limite para datos faltantes
+
+```{python}
+threshold_nan = 70
+
+cols_to_drop = nan_percent[nan_percent>threshold_nan].index
+print(cols_to_drop)
+
+movies_cleaned = movies_extended.drop(columns=cols_to_drop)
+```
+
+## Estadísticos de pandas
+
+```{python}
+movies_cleaned.describe()
+```
+
+## Distribución para todas las variables numéricas
+
+```{python}
+
+numerical_columns = movies_cleaned.select_dtypes('number').columns.tolist()
+
+alt.Chart(movies_cleaned).mark_bar().encode(
+    alt.X(alt.repeat(), type='quantitative',bin=alt.Bin(maxbins=30)),
+    alt.Y('count()')
+).properties(
+    width=200,
+    height=200
+).repeat(
+    numerical_columns,
+    columns=3
+)
+
+```
+
+## Gráfico de dispersión por todas las variables
+
+```{python}
+numerical_filtered = [
+    'IMDB_Rating',
+    'Rotten_Tomatoes_Rating',
+    'US_Gross',
+    'Production_Budget'
+]
+
+alt.Chart(movies_cleaned).mark_point().encode(
+    alt.X(alt.repeat('column'), type='quantitative'),
+    alt.Y(alt.repeat('row'), type='quantitative')
+).properties(
+    width=100,
+    height=100
+).repeat(
+    column=numerical_filtered,
+    row=numerical_filtered, 
+)
+
+```
+
+## Heatmap de todas las variables
+
+```{python}
+alt.Chart(movies_cleaned).mark_rect().encode(
+    alt.X(alt.repeat('column'), type='quantitative', bin=alt.Bin(maxbins=30)),
+    alt.Y(alt.repeat('row'), type='quantitative', bin=alt.Bin(maxbins=30)),
+    alt.Color('count()')
+).properties(
+    width=100,
+    height=100
+).repeat(
+    column=numerical_filtered,
+    row=numerical_filtered, 
+).resolve_scale(
+    color='independent'
+)
+
+```
+
+# Correlación de Pearson
+
+```{python}
+corr_matrix = movies_cleaned[numerical_columns].corr(method='pearson')
+corr_matrix
+```
+
+## Melt de la matrix de correlación
+
+```{python}
+corr_df = corr_matrix.reset_index().melt(id_vars='index')
+corr_df.columns = ['Variable1','Variable2','Correlation']
+corr_df
+```
+
+## Matriz de Pearson
+
+```{python}
+
+corr_df = corr_df[corr_df['Variable1']<=corr_df['Variable2']]
+
+
+heatmap_corr = alt.Chart(corr_df).mark_rect().encode(
+    alt.X('Variable1'),
+    alt.Y('Variable2'),
+    alt.Color('Correlation', scale=alt.Scale(domain=[-1,1], scheme='redblue')),
+    tooltip=[
+        'Variable1',
+        'Variable2',
+        'Correlation'
+    ]
+).properties(
+    width=300,
+    height=300,
+    title='Matriz de Correlación de Pearson'
+)
+
+text_corr = heatmap_corr.mark_text().encode(
+    alt.Text('Correlation', format='.2f'),
+    color = alt.condition(
+        'abs(datum.Correlation) > 0.5',
+        alt.value('white'),
+        alt.value('black')
+    )
+)
+
+
+(heatmap_corr + text_corr).configure_view(
+    strokeWidth=0
+)
+```
+
+## Cruce de columnas categóricas y numéricas
+
+```{python}
+categorical_columns = movies_cleaned.select_dtypes('object').columns.tolist()
+
+categorical_to_remove = ['Title','Release_Date', 'Distributor','Director','Source']
+
+categorical_filtered = [col for col in categorical_columns if col not in categorical_to_remove]
+
+categorical_filtered
+
+
+alt.Chart(movies_cleaned).mark_boxplot().encode(
+    alt.X(alt.repeat('column'), type='quantitative'),
+    alt.Y(alt.repeat('row'), type='nominal'),
+    alt.Size('count()')
+).properties(
+    width=200,
+    height=200
+).repeat(
+    column=numerical_columns,
+    row=categorical_filtered
+)
+```
+
+## Describir variables categóricas
+
+```{python}
+movies_cleaned.describe(exclude='number')
+```
+
+## Gráfico de cada categoría
+
+```{python}
+alt.Chart(movies_cleaned).mark_bar().encode(
+    alt.X('count()'),
+    alt.Y(alt.repeat(), type='nominal', sort='-x')
+).repeat(
+    categorical_filtered
+)
+```
+
+## Gráfico del cruce de cada categoría
+
+```{python}
+alt.Chart(movies_cleaned).mark_circle().encode(
+    alt.X(alt.repeat('column'),type='nominal', sort='-size'),
+    alt.Y(alt.repeat('row'),type='nominal', sort='size'),
+    alt.Size('count()'),
+    alt.Color('count()')
+).repeat(
+    column=categorical_filtered,
+    row=categorical_filtered
+).resolve_scale(
+    color='independent',
+    size='independent'
+)
+```
+
+## Gráfico con facetas y repeat
+
+```{python}
+
+alt.Chart(movies_cleaned).mark_boxplot().encode(
+    alt.X('Running_Time_min', type='quantitative'),
+    alt.Y(alt.repeat('row'), type='nominal'),
+    alt.Size('count()')
+).facet(
+    column='MPAA_Rating'
+).repeat(
+    row=categorical_filtered
+)
+
+```

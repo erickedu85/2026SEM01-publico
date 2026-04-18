@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - static/**  
 
 website:
   title: "My Quarto Project"
@@ -16,6 +18,8 @@ website:
           text: Análisis Univariado
         - href: bivariate.qmd
           text: Análisis Bivariado
+        - href: static/mapa.html
+          text: Mapa
 
 format:
   html:
